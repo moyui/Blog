@@ -19,8 +19,39 @@ module.exports = {
       'react-router-redux'
     ]
   },
+  module: {
+    rules: [
+      {
+        test: /(\.jsx|\.js)$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              'env', 'react'
+            ]
+          }
+        },
+        exclude: /node_modules/
+      },{
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },{
+            loader: 'css-loader',
+            options: {
+              module: true,
+            }
+          }
+        ]
+      },{
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
+      }
+    ]
+  },
   plugins: [
-    new CleanWebpackPlugin(pathsToClean),
+    new webpack.BannerPlugin('moyui末御'),
     new HtmlWebpackPlugin({
       title: 'Caching'
     }),
@@ -30,6 +61,9 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
-    })
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new ExtractTextPlugin("style.css")
+    new CleanWebpackPlugin(pathsToClean),
   ]
 };
