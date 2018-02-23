@@ -1,12 +1,10 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-//let pathsToClean = [
-  //'./assets/dist',
-  //'../build/dist'
-//];
+let pathsToClean = [
+  '../build/dist'
+];
 
 module.exports = {
   entry: {
@@ -46,7 +44,7 @@ module.exports = {
     ]
   },
   plugins: [
-    //new CleanWebpackPlugin(pathsToClean),
+    new CleanWebpackPlugin(pathsToClean),
     new webpack.BannerPlugin('moyui末御'),
     new HtmlWebpackPlugin({
       template: __dirname + "/assets/dist/index.html"
@@ -57,8 +55,6 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
-    }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new ExtractTextPlugin("style.css")
+    })
   ]
 };

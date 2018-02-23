@@ -2,12 +2,12 @@ import React from 'react';
 
 import { view as SideMenu } from './SideMenu/';
 
-function Blog() {
+const Blog = () => {
   return (
     <div>
       <SideMenu />
     </div>
   );
-}
+};
 
 export default Blog;
