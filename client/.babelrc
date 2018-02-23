@@ -1,5 +1,5 @@
 {
-  "present": ["react", "env"],
+  "presets": ["react", "env"],
   "env": {
     "development": {
     "plugins": [["react-transform", {

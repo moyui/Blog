@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const path = require('path');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -10,12 +11,12 @@ module.exports = merge(common, {
     inline: true,
     historyApiFallback: true
   },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, '/assets/dist')
+  },
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
-  ],
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(_dirname, 'assets/dist');
-  }
+  ]
 });

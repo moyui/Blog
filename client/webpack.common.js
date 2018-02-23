@@ -1,12 +1,12 @@
 const webpack = require('webpack');
-const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-let pathsToClean = [
-  '.assets/dist',
-  '../build/dist'
-];
+//let pathsToClean = [
+  //'./assets/dist',
+  //'../build/dist'
+//];
 
 module.exports = {
   entry: {
@@ -24,12 +24,7 @@ module.exports = {
       {
         test: /(\.jsx|\.js)$/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              'env', 'react'
-            ]
-          }
+          loader: 'babel-loader'
         },
         exclude: /node_modules/
       },{
@@ -51,9 +46,10 @@ module.exports = {
     ]
   },
   plugins: [
+    //new CleanWebpackPlugin(pathsToClean),
     new webpack.BannerPlugin('moyui末御'),
     new HtmlWebpackPlugin({
-      title: 'Caching'
+      template: __dirname + "/assets/dist/index.html"
     }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
@@ -64,6 +60,5 @@ module.exports = {
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new ExtractTextPlugin("style.css")
-    new CleanWebpackPlugin(pathsToClean),
   ]
 };

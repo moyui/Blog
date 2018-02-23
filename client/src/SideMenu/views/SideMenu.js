@@ -4,7 +4,9 @@ import { AboutMe } from './AboutMe.js';
 
 export default () => {
   return (
-    <List />
-    <AboutMe />
+    <div>
+      <List />
+      <AboutMe />
+    </div>
   );
 };
