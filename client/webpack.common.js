@@ -14,7 +14,6 @@ module.exports = {
       'redux',
       'react-redux',
       'react-router',
-      'redux-thunk',
       'react-router-redux'
     ]
   },
