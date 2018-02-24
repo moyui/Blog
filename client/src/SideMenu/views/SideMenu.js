@@ -1,11 +1,11 @@
 import React from 'react';
-import { List } from './List.js';
+import { LinkList } from './LinkList.js';
 import { AboutMe } from './AboutMe.js';
 
 export default () => {
   return (
     <div>
-      <List />
+      <LinkList />
       <AboutMe />
     </div>
   );

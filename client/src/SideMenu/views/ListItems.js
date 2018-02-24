@@ -6,6 +6,7 @@ const ListItems = () => {
   return (
     <ul>
       <li><Link to="/home">首页</Link></li>
+      <li><Link to="/article">文章</Link></li>
       <li><Link to="/archive">归档</Link></li>
     </ul>
   );
