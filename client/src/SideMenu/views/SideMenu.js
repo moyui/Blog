@@ -1,12 +1,14 @@
 import React from 'react';
-import { List } from './List.js';
+import { MenuList } from './MenuList.js';
 import { AboutMe } from './AboutMe.js';
 
-export default () => {
+const SideMenu = () => {
   return (
     <div>
-      <List />
+      <MenuList />
       <AboutMe />
     </div>
   );
 };
+
+export default SideMenu;
