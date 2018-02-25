@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
-const ArticleItems = () => {
+const ArticleItems = ({title, archive, date, }) => {
   return (
     <div>
       <h3><Link to="/">title</Link></h3>
@@ -13,5 +13,8 @@ const ArticleItems = () => {
     </div>
   );
 };
+
+
+
 
 export {ArticleItems};

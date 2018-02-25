@@ -20,8 +20,8 @@ export const fetchArticleFailure = (error) => {
   }
 };
 
-export const fetchArticle = async () => {
-  return (dispatch) => {
+export const fetchArticle = () => {
+  return async (dispatch) => {
     const apiUrl = `/XXXX`;
 
     dispatch(fetchArticleStarted());
@@ -31,9 +31,9 @@ export const fetchArticle = async () => {
       if (response.status !== 200) {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }
-      let responseJSON = await response.json();
+      let responseJson = await response.json();
 
-      dispatch(fetchArticleSuccess(responseJSON));
+      dispatch(fetchArticleSuccess(responseJson.articleInfo));
     } catch(error) {
       dispatch(fetchArticleFailure(error));
     }
