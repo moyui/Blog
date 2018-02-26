@@ -1,30 +1,30 @@
-export { FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE } from './actionTypes.js';
+import { FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE } from './actionTypes.js';
 
-export const fetchBlogStarted = () => {
+export const fetchANumStarted = () => {
   return {
     type: FETCH_STARTED
   }
 };
 
-export const fetchBlogSuccess = (data) => {
+export const fetchANumSuccess = (data) => {
   return {
     type: FETCH_SUCCESS,
     data
   }
 }
 
-export const fetchBlogFailure = (error) => {
+export const fetchANumFailure = (error) => {
   return {
     type: FETCH_FAILURE,
     error
   }
 }
 
-export const fetchBlog = () => {
+export const fetchANum = () => {
   return async (dispatch) => {
     const apiUrl = `/XXXX`;
 
-    dispatch(fetchBlogStarted);
+    dispatch(fetchANumStarted());
 
     try {
       let response = await fetch(apiUrl);
@@ -33,9 +33,9 @@ export const fetchBlog = () => {
       }
       let responseJson = await response.json();
 
-      dispatch(fetchBlogSuccess(responseJson.BlogInfo))
+      dispatch(fetchANumSuccess(responseJson.BlogInfo))
     } catch (error) {
-      dispatch(fetchBlogFailure(error));
+      dispatch(fetchANumFailure(error));
     }
   }
 }

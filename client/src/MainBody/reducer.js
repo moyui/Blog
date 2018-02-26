@@ -16,7 +16,7 @@ export default (state = [], action) => {
       return [
         {
           status: Status.SUCCESS,
-          ...action.data
+          ...action.data,
         },
         ...state
       ]

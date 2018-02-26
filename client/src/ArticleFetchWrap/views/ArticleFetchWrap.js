@@ -3,6 +3,7 @@ import { connnect } from 'react-redux';
 
 import { view as ArticleList } from '../../MainBody/';
 import actions as articleActions from '../../MainBody/';
+import actions as articleWrapActions from '../actions';
 
 class FetchWrap extends React.Component {
   constructor() {
@@ -12,10 +13,10 @@ class FetchWrap extends React.Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {//声明周期函数变成异步？？？
     const renderNum = this.state.renderNum;
     for (let i = 0; i < renderNum; i++) { //不知道有什么好的替代方法
-      this.props.fetchInfo();
+      this.props.fetchArticleInfo();
     }
   }
 
@@ -28,10 +29,19 @@ class FetchWrap extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+
+  }
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchInfo: () => {
+    fetchArticleInfo: () => {
       dispatch(articleActions.fetchArticle(...));//之后要继续修改
+    },
+    fetchArtccleNum: () => {
+
     }
   }
 };
