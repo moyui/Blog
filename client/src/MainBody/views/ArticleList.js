@@ -8,28 +8,21 @@ import { ArticleItems } from './ArticleItems.js';
 
 const ArticleList = ({mainbody}) => {
   return (
-    <ul>
+    <React.Fragment>
       {
         mainbody.map((item) => {
           const status = item.status;//读取当前文章状态
           switch (status) {//根据状态渲染不同文章段
             case Status.LOADING: {
-              return (<li>{item.show}</li>);
+              return (<div>{item.show}</div>);
             }
             case Status.SUCCESS: {
               return (
-                <ArticleItems
-                  title={item.title}
-                  archive={item.archive}
-                  date={item.date}
-                  readTimes={item.readTimes}
-                  articleParts={item.articleParts}
-                  linkTo={item.linkTo}
-                />
+                <ArticleItems {...items} />
               );
             }
             case Status.FAILURE: {
-              return (<li>{item.show}</li>);
+              return (<div>{item.show}</div>);
             }
             default: {
               throw new Error('unexpected status ' + status);
@@ -37,7 +30,7 @@ const ArticleList = ({mainbody}) => {
           }
         })
       }
-    </ul>
+    </React.Fragment>
   );
 };
 

@@ -1,0 +1,5 @@
+export const FETCH_STARTED = 'BLOG/FETCH_STARTED';
+
+export const FETCH_SUCCESS = 'BLOG/FETCH_SUCCESS';
+
+export const FETCH_FAILURE = 'BLOG/FETCH_FAILURE';
