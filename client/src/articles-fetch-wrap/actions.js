@@ -20,14 +20,14 @@ export const fetchANumFailure = (error) => {
   }
 }
 
-export const fetchANum = () => {
+export const fetchANum = (id) => {//传入id要处理
   return async (dispatch) => {
     const apiUrl = `/XXXX`;
 
     dispatch(fetchANumStarted());
 
     try {
-      let response = await fetch(apiUrl);
+      let response = await fetch(apiUrl);//
       if (response.status !== 200) {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }

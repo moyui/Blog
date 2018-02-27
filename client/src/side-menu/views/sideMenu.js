@@ -1,6 +1,6 @@
 import React from 'react';
-import { LinkList } from './LinkList.js';
-import { AboutMe } from './AboutMe.js';
+import { LinkList } from './linkList.js';
+import { AboutMe } from './aboutMe.js';
 
 export default () => {
   return (

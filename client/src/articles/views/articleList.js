@@ -3,10 +3,10 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as Status from '../status.js';
-import { ArticleItems } from './ArticleItems.js';
+import * as Status from '../../status.js';
+import { ArticleItems } from './articleItems.js';
 
-const ArticleList = ({mainbody}) => {
+const ArticleList = ({articleInfo}) => {
   return (
     <React.Fragment>
       {
@@ -35,13 +35,7 @@ const ArticleList = ({mainbody}) => {
 };
 
 ArticleList.propTypes = {
-  mainbody: PropTypes.array.isRequired
+  articleInfo: PropTypes.array.isRequired
 };
 
-const mapStateToProps = (state) => {
-  return {
-    mainbody: state.mainbody
-  }
-};
-
-export default connect(mapStateToProps, null)(ArticleList);
+export default ArticleList

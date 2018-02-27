@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { ListItems } from './ListItems.js';
+import { ListItems } from './listItems.js';
 
 const LinkList = () => {
   return (

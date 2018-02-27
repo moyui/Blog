@@ -16,6 +16,7 @@ export default (state = [], action) => {
       return [
         {
           status: Status.SUCCESS,
+          show: '加载成功啊喵~',
           ...action.data,
         },
         ...state

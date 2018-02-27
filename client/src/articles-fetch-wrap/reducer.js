@@ -1,5 +1,5 @@
-import * as Status from './status.js';
 import { FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE } from './actionTypes.js';
+import * as Status from '../status.js';
 
 export default (state = {status: Status.LOADING}, action) => {
   switch(action.type) {
@@ -14,10 +14,7 @@ export default (state = {status: Status.LOADING}, action) => {
       };
     }
     case FETCH_FAILURE: {
-      return {
-        ...state,
-        status: Status.FETCH_FAILURE
-      };
+      return {status: Status.FETCH_FAILURE};
     }
     default: {
       return state;

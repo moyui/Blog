@@ -1,12 +1,14 @@
 import { createStore, combineReducers, compose, applyMiddleWare } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import { reducer as MainBodyReducer } from './MainBody/';
+import { reducer as articleNumReducer } from './articles-fetch-wrap/';
+import { reducer as articleInfoReducer } from './articles/';
 
 const win = window;
 
 const reducer = combineReducers({
-  mainbody: MainBodyReducer
+  articleNum: articleNumReducer,
+  articleInfo: articleInfoReducer,
 });
 
 const middlewares = [thunkMiddleware];

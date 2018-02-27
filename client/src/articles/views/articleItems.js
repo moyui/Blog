@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
 const ArticleItems = () => {
@@ -16,5 +17,14 @@ const ArticleItems = () => {
     </div>
   );
 };
+
+ArticleItems.propTypes = {
+  title: PropTypes.String,
+  archive: PropTypes.String,
+  date: PropTypes.String,
+  readTimes: PropTypes.String,
+  abstract: PropTypes.String,
+}
+
 
 export {ArticleItems};

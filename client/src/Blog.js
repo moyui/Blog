@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { view as SideMenu } from '../SideMenu/';
-import { view as MainBodyWrap } from '../ArticleFetchWrap/';
+import { view as SideMenu } from './side-menu/';
+import { view as ArticleBodyWrap } from './articles-fetch-wrap/';
 
 const Blog = () => {
   return (
     <div>
       <SideMenu />
-      <MainBodyWrap />
+      <ArticleBodyWrap />
     </div>
   );
 };
