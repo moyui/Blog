@@ -1,4 +1,4 @@
-import { createStore, combineReducers, compose, applyMiddleWare } from 'redux';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 import { reducer as articleNumReducer } from './articles-fetch-wrap/';
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const storeEnhancers = compose(
-  applyMiddleWare(...middlewares),
+  applyMiddleware(...middlewares),
   (win && win.devToolsExtension) ? win.devToolsExtension() : (f) => f,
 );
 

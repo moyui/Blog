@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Provier } from 'react-redux';
+import { Provider } from 'react-redux';
 
 import Blog from './Blog.js';
 import store from './Store.js';
 
 
 ReactDOM.render(
-  <Provier store={store}>
+  <Provider store={store}>
     <Router>
       <Blog />
     </Router>
-  </Provier>,
+  </Provider>,
   document.getElementById('root')
 )

@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
-const ArticleItems = () => {
-  const {title, archive, date, readTimes, abstract, link} = this.props;
-
+const ArticleItems = ({title, archive, date, readTimes, abstract, link}) => {
   return (
     <div>
       <h3><Link to={link}>{title}</Link></h3>
@@ -19,11 +17,11 @@ const ArticleItems = () => {
 };
 
 ArticleItems.propTypes = {
-  title: PropTypes.String,
-  archive: PropTypes.String,
-  date: PropTypes.String,
-  readTimes: PropTypes.String,
-  abstract: PropTypes.String,
+  title: PropTypes.string,
+  archive: PropTypes.string,
+  date: PropTypes.string,
+  readTimes: PropTypes.string,
+  abstract: PropTypes.string,
 }
 
 

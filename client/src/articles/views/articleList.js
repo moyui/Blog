@@ -3,25 +3,24 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as Status from '../../status.js';
 import { ArticleItems } from './articleItems.js';
 
 const ArticleList = ({articleInfo}) => {
   return (
     <React.Fragment>
       {
-        mainbody.map((item) => {
+        articleInfo.map((item) => {
           const status = item.status;//读取当前文章状态
           switch (status) {//根据状态渲染不同文章段
-            case Status.LOADING: {
+            case 'loading': {
               return (<div>{item.show}</div>);
             }
-            case Status.SUCCESS: {
+            case 'success': {
               return (
-                <ArticleItems {...items} />
+                <ArticleItems key={item.id} {...item} />
               );
             }
-            case Status.FAILURE: {
+            case 'failure': {
               return (<div>{item.show}</div>);
             }
             default: {

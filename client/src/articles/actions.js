@@ -20,20 +20,29 @@ export const fetchArticleFailure = (error) => {
   }
 };
 
-export const fetchArticle = () => {
+export const fetchArticle = (type) => {
   return async (dispatch) => {
-    const apiUrl = `/XXXX`;
-
+    const apiUrl = 'http://127.0.0.1:8000/articleinfo';
+    const headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    const init = {
+      method: 'get',
+      body: {
+        "rendernum": "part"
+      },
+      headers: headers,
+      mode: 'cors'
+    };
+    console.log(apiUrl);
     dispatch(fetchArticleStarted());
-
     try {
-      let response = await fetch(apiUrl);
-      if (response.status !== 200) {
+      let response = await fetch(apiUrl, init);
+      if (response.status !== 200 || response.ok !== true) {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }
       let responseJson = await response.json();
-
-      dispatch(fetchArticleSuccess(responseJson.articleInfo));
+      dispatch(fetchArticleSuccess(responseJson.data));
     } catch(error) {
       dispatch(fetchArticleFailure(error));
     }

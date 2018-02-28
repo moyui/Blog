@@ -1,41 +1,8 @@
-import { FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE } from './actionTypes.js';
+import { SET_NUM } from './actionTypes.js';
 
-export const fetchANumStarted = () => {
+export const setNum = (renderNum) => {
   return {
-    type: FETCH_STARTED
+    type: SET_NUM,
+    renderNum: renderNum
   }
 };
-
-export const fetchANumSuccess = (data) => {
-  return {
-    type: FETCH_SUCCESS,
-    data
-  }
-}
-
-export const fetchANumFailure = (error) => {
-  return {
-    type: FETCH_FAILURE,
-    error
-  }
-}
-
-export const fetchANum = (id) => {//传入id要处理
-  return async (dispatch) => {
-    const apiUrl = `/XXXX`;
-
-    dispatch(fetchANumStarted());
-
-    try {
-      let response = await fetch(apiUrl);//
-      if (response.status !== 200) {
-        throw new Error(`获取数据失败，错误代码:${response.status}`);
-      }
-      let responseJson = await response.json();
-
-      dispatch(fetchANumSuccess(responseJson.BlogInfo))
-    } catch (error) {
-      dispatch(fetchANumFailure(error));
-    }
-  }
-}

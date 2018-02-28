@@ -1,20 +1,9 @@
-import { FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE } from './actionTypes.js';
-import * as Status from '../status.js';
+import { SET_NUM } from './actionTypes.js';
 
-export default (state = {status: Status.LOADING}, action) => {
+export default (state = {num: 'part'}, action) => {//默认渲染15个条目
   switch(action.type) {
-    case FETCH_STARTED: {
-      return {status: Status.LOADING};
-    }
-    case FETCH_SUCCESS: {
-      return {
-        ...state,
-        status: Status.SUCCESS,
-        ...action.data,
-      };
-    }
-    case FETCH_FAILURE: {
-      return {status: Status.FETCH_FAILURE};
+    case SET_NUM: {
+      num: action.renderNum;
     }
     default: {
       return state;
