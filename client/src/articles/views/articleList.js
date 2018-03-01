@@ -17,7 +17,7 @@ const ArticleList = ({articleInfo}) => {
             }
             case 'success': {
               return (
-                <ArticleItems key={item.id} {...item} />
+                <ArticleItems key={item.id} id={item.id} {...item} />
               );
             }
             case 'failure': {

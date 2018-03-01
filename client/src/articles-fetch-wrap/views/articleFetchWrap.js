@@ -16,20 +16,19 @@ class ArticleFetchWrap extends React.Component {
   }
 
   componentDidMount() {
-    this.props.renderNum(renderNum.part);
-    const type = this.props.articleNum.num;
+    const type = renderNum.part;
+    this.props.renderNum(type);
     this.props.fetchArticleInfo(type);
   }
 
   render() {
-    const articleInfo = this.props.articleInfo;
-    const articleNum = this.props.articleNum;
+    const { articleInfo, articleNum }= this.props;
     return (
       <div>
         {
           articleInfo.status === status.SUCCESS ?
           (<ArticleList renderNum={articleNum.num} articleInfo={articleInfo.data} />) :
-          (<div>{articleInfo.show}</div>)
+          articleInfo.show
         }
       </div>
     );

@@ -23,6 +23,16 @@ const server = http.createServer((req, res) => {
           date: '2018/2/28',
           readTimes: '1',
           abstract: '这是百度首页',
+        },
+        {
+          id: 0002,
+          status: 'success',
+          link: 'www.baidu.com',
+          title: '谷歌',
+          archive: '网址',
+          date: '2018/3/1',
+          readTimes: '1',
+          abstract: '这是谷歌首页',
         }
       ]
     };
