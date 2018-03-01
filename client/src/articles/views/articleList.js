@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { ArticleItems } from './articleItems.js';
 
-const ArticleList = ({articleInfo}) => {
+const ArticleList = ({articleInfo, articleStatus}) => {
   return (
     <React.Fragment>
       {
@@ -28,6 +28,10 @@ const ArticleList = ({articleInfo}) => {
             }
           }
         })
+      }
+      {
+        articleStatus === 'Success' ?
+        (<Route path={`${articleInfo.url}/articels`} />) : null
       }
     </React.Fragment>
   );

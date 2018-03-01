@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ArticleItems = ({title, archive, date, readTimes, abstract, link}) => {
   return (
@@ -11,7 +11,6 @@ const ArticleItems = ({title, archive, date, readTimes, abstract, link}) => {
       <p>{date}</p>
       <p>{abstract}</p>
       <button><Link to={link}>阅读全文</Link></button>
-      <Route exact path={link} />
     </div>
   );
 };

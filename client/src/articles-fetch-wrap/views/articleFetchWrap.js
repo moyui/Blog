@@ -27,7 +27,10 @@ class ArticleFetchWrap extends React.Component {
       <div>
         {
           articleInfo.status === status.SUCCESS ?
-          (<ArticleList renderNum={articleNum.num} articleInfo={articleInfo.data} />) :
+          (<ArticleList
+            renderNum={articleNum.num}
+            articleInfo={articleInfo.data}
+            articleStatus={articleInfo.status}/>) :
           articleInfo.show
         }
       </div>
