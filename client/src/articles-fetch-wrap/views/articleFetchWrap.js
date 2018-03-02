@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { view as ArticleList, actions as articleActions } from '../../articles/';
+import { view as ArticleList, actions as articleActions } from '../../article-items/';
 import * as articleWrapActions from '../actions.js';
 import * as status from '../../status.js';
 
@@ -18,7 +18,7 @@ class ArticleFetchWrap extends React.Component {
   componentDidMount() {
     const type = renderNum.part;
     this.props.renderNum(type);
-    this.props.fetchArticleInfo(type);
+    this.props.fetchArticleItems(type);
   }
 
   render() {
@@ -47,8 +47,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchArticleInfo: (type) => {
-      dispatch(articleActions.fetchArticle(type));
+    fetchArticleItems: (type) => {
+      dispatch(articleActions.fetchAItems(type));
     },
     renderNum: (renderNum) => {
       dispatch(articleWrapActions.setNum(renderNum));

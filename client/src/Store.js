@@ -2,7 +2,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 import { reducer as articleNumReducer } from './articles-fetch-wrap/';
-import { reducer as articleInfoReducer } from './articles/';
+import { reducer as articleInfoReducer } from './article-items/';
 
 const win = window;
 
