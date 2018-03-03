@@ -1,4 +1,4 @@
-import { FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE } from './actionTypes.js';
+import  { FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE } from './actionTypes.js';
 import * as Status from '../status.js';
 
 export default (state = {}, action) => {
@@ -23,7 +23,7 @@ export default (state = {}, action) => {
         show: '加载失败啊喵!',
       }
     }
-    default : {
+    default: {
       return state
     }
   }

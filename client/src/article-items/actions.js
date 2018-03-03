@@ -29,19 +29,19 @@ export const fetchAItems = (type) => {
     const init = {
       method: 'get',
       body: {
-        "rendernum": "part"
+        'renderNum': type
       },
       headers: headers,
       mode: 'cors'
     };
-    console.log(apiUrl);
+
     dispatch(fetchAItemsStarted());
     try {
-      let response = await fetch(apiUrl, init);
+      const response = await fetch(apiUrl, init);
       if (response.status !== 200 || response.ok !== true) {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }
-      let responseJson = await response.json();
+      const responseJson = await response.json();
       dispatch(fetchAItemsSuccess(responseJson.data));
     } catch(error) {
       dispatch(fetchAItemsFailure(error));
