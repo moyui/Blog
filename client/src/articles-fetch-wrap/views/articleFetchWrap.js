@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 
 import { view as ArticleList, actions as articleItemsActions } from '../../article-items/';
 import * as articleWrapActions from '../actions.js';
@@ -56,4 +57,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleFetchWrap);
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ArticleFetchWrap));

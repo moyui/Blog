@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { ArticleItems } from './articleItems.js';
+import { view as Article } from '../../article-info/';
 
 const ArticleList = ({articleItems, articleStatus}) => {
   return (
@@ -30,9 +31,10 @@ const ArticleList = ({articleItems, articleStatus}) => {
         })
       }
       {
-        articleStatus === 'Success' ?
-        (<Route path={`${articleItems.url}/articels`} />) : null
+        articleStatus === 'Success' ? 
+        (<Route path="/article" component={Article} />) : null
       }
+      
     </React.Fragment>
   );
 };

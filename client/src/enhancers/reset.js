@@ -1,5 +1,3 @@
-import { createStore } from 'redux';
-
 const RESER_ACTION_TYPE = '@@RESET';
 
 const reserReducerCreator = (reducer, resetState) => (state, aciton) => {

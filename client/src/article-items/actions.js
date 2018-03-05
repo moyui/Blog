@@ -22,7 +22,7 @@ export const fetchAItemsFailure = (error) => {
 
 export const fetchAItems = (type) => {
   return async (dispatch) => {
-    const apiUrl = 'http://127.0.0.1:8000/articleinfo';
+    const apiUrl = 'http://127.0.0.1:8000/articleitems';
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
