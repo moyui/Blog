@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import { ArticleItems } from './articleItems.js';
 import { view as Article } from '../../article-info/';
 
-const ArticleList = ({articleItems, articleStatus}) => {
+const ArticleList = ({articleItemsData, articleItemsStatus}) => {
   return (
     <React.Fragment>
       {
-        articleItems.map((item) => {
+        articleItemsData.map((item) => {
           const status = item.status;//读取当前文章状态
           switch (status) {//根据状态渲染不同文章段
             case 'loading': {
@@ -31,16 +31,15 @@ const ArticleList = ({articleItems, articleStatus}) => {
         })
       }
       {
-        articleStatus === 'Success' ? 
-        (<Route path="/article" component={Article} />) : null
+        articleItemsStatus === 'Success' ? 
+        (<Route path="/articleinfo/:id" component={Article} />) : null
       }
-      
     </React.Fragment>
   );
 };
 
 ArticleList.propTypes = {
-  articleItems: PropTypes.array.isRequired
+  articleItemsData: PropTypes.array.isRequired
 };
 
 export default ArticleList

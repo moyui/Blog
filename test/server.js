@@ -1,5 +1,4 @@
 const http = require('http');
-const bodyParser = require('body-parser');
 const hostname = '127.0.0.1';
 const port = 8000;
 
@@ -11,13 +10,11 @@ const server = http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.statusCode = 200;
-    console.log(req.body);
     const data = {
       data: [
         {
-          id: 0001,
+          id: 1,
           status: 'success',
-          link: 'article',
           title: '百度',
           archive: '网址',
           date: '2018/2/28',
@@ -25,9 +22,8 @@ const server = http.createServer((req, res) => {
           abstract: '这是百度首页',
         },
         {
-          id: 0002,
+          id: 2,
           status: 'success',
-          link: 'article',
           title: '谷歌',
           archive: '网址',
           date: '2018/3/1',
@@ -35,6 +31,24 @@ const server = http.createServer((req, res) => {
           abstract: '这是谷歌首页',
         }
       ]
+    };
+    res.end(JSON.stringify(data));
+  }
+
+  if (req.url === '/articleinfo') {
+    res.sendDate = true;
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.statusCode = 200;
+    const data = {
+      data: {
+          title: '百度',
+          page: '百度是一家垃圾搜索引擎啊喵~',
+          previousPage: null,
+          nextPage: 2
+        }
     };
     res.end(JSON.stringify(data));
   }

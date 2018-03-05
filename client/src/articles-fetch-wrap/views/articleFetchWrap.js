@@ -2,55 +2,84 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 
-import { view as ArticleList, actions as articleItemsActions } from '../../article-items/';
+import { view as ArticleList } from '../../article-items/';
 import * as articleWrapActions from '../actions.js';
 import * as status from '../../status.js';
 
 const renderNum = { //定义选择文章显示的数量,part默认为15条，在服务器端修改
-  part: 'part',
-  all: 'all',
+  part: 15,
+  all: 'all'
 }
 
 class ArticleFetchWrap extends React.Component {
   constructor() {
     super(...arguments);
+    this.state = {
+      articleItems: [],
+      status: ''
+    }
+  }
+
+  async fetchAItems(type) {
+    const apiUrl = 'http://127.0.0.1:8000/articleitems';
+    const headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    const init = {
+      method: 'get',
+      body: {
+        renderNum: type
+      },
+      headers: headers,
+      mode: 'cors'
+    };
+    this.setState({status: status.LOADING});
+    try {
+      const response = await fetch(apiUrl, init);
+      if (response.status !== 200 || response.ok !== true) {
+        throw new Error(`获取数据失败，错误代码:${response.status}`);
+      }
+      const responseJson = await response.json();
+      this.setState({articleItems: responseJson, status: status.SUCCESS});
+    } catch(error) {
+      this.setState({status: status.FAILURE});
+    }
   }
 
   componentDidMount() {
     const type = renderNum.part;
-    this.props.renderNum(type);
-    this.props.fetchArticleItems(type);
+    this.props.renderNum(num); //
+    this.fetchAItems(this.props.renderNum);  
   }
 
   render() {
-    const { articleItems, articleNum }= this.props;
+    const status = this.state.status;
+
     return (
-      <div>
-        {
-          articleItems.status === status.SUCCESS ?
-          (<ArticleList
-            renderNum={articleNum.num}
-            articleItems={articleItems.data}
-            articleStatus={articleItems.status}/>) :
-          articleItems.show
+      <div> {
+        () => {
+          switch(status) {
+            case status.LOADING: '加载进行中啊喵~';
+            case status.SUCCESS: 
+            (<ArticleList articleItemsData={this.state.articleItems}
+                          articleItemsStatus={this.state.status}/>);
+            case status.FAILURE: '加载失败啊喵!';
+            default: throw new Error(`未知状态${status}`);
+          }
         }
-      </div>
-    );
+      }</div>
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     articleNum: state.articleNum,
-    articleItems: state.articleItems,
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchArticleItems: (type) => {
-      dispatch(articleItemsActions.fetchAItems(type));
-    },
     renderNum: (renderNum) => {
       dispatch(articleWrapActions.setNum(renderNum));
     }
