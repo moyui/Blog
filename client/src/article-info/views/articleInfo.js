@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import * as status from '../../status.js';
+import * as Status from '../../status.js';
 
 class ArticleInfo extends React.Component {
   constructor() {
@@ -24,16 +24,16 @@ class ArticleInfo extends React.Component {
       header: headers,
       mode: 'cors'
     };
-    this.setState({status: status.LOADING});
+    this.setState({status: Status.LOADING});
     try {
       const response = await fetch(apiUrl, init);
       if (response.status !== 200 || response.ok !== true) {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }
       const responseJson = await response.json();
-      this.setState({status: status.SUCCESS, articleInfo: responseJson});
+      this.setState({status: Status.SUCCESS, articleInfo: responseJson});
     } catch(error) {
-      this.setState({status: status.FAILURE});
+      this.setState({status: Status.FAILURE});
     }
   }
 
@@ -43,16 +43,26 @@ class ArticleInfo extends React.Component {
   }
 
   render() {
-    const articleInfo = this.state.articleInfo;
+    const {status, articleInfo} = this.state;
+
     return (
-        this.state.Status === 'Success' ? 
-        (<div>
-          <title>{articleInfo.title}</title>
-          <p>{articleInfo.page}</p>
-          <button><Link to={articleInfo.previousPage}>上一篇</Link></button>
-          <button><Link to={articleInfo.nextPage}>下一篇</Link></button>
-        </div>) : 
-        (<div>{articleInfo.show}</div>)
+      <div> {
+        () => {
+          switch(status) {
+            case Status.LOADING: '加载进行中啊喵~';
+            case Status.SUCCESS: (
+              <React.Fragment>
+                <title>{articleInfo.title}</title>
+                <p>{articleInfo.page}</p>
+                <button><Link to={articleInfo.previousPage}>上一篇</Link></button>
+                <button><Link to={articleInfo.nextPage}>下一篇</Link></button>
+              </React.Fragment>
+            );
+            case Status.FAILURE: '加载失败啊喵!';
+            default: throw new Error(`未知状态${this.status}`);
+          }
+        }
+      }</div>
     )
   }
 }

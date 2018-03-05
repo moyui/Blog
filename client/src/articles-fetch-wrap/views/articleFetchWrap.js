@@ -4,7 +4,7 @@ import { withRouter } from 'react-router'
 
 import { view as ArticleList } from '../../article-items/';
 import * as articleWrapActions from '../actions.js';
-import * as status from '../../status.js';
+import * as Status from '../../status.js';
 
 const renderNum = { //定义选择文章显示的数量,part默认为15条，在服务器端修改
   part: 15,
@@ -33,16 +33,16 @@ class ArticleFetchWrap extends React.Component {
       headers: headers,
       mode: 'cors'
     };
-    this.setState({status: status.LOADING});
+    this.setState({status: Status.LOADING});
     try {
       const response = await fetch(apiUrl, init);
       if (response.status !== 200 || response.ok !== true) {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }
       const responseJson = await response.json();
-      this.setState({articleItems: responseJson, status: status.SUCCESS});
+      this.setState({articleItems: responseJson, status: Status.SUCCESS});
     } catch(error) {
-      this.setState({status: status.FAILURE});
+      this.setState({Status: status.FAILURE});
     }
   }
 
@@ -53,17 +53,17 @@ class ArticleFetchWrap extends React.Component {
   }
 
   render() {
-    const status = this.state.status;
+    const {status, articleItems} = this.state;
 
     return (
       <div> {
         () => {
           switch(status) {
-            case status.LOADING: '加载进行中啊喵~';
-            case status.SUCCESS: 
-            (<ArticleList articleItemsData={this.state.articleItems}
-                          articleItemsStatus={this.state.status}/>);
-            case status.FAILURE: '加载失败啊喵!';
+            case Status.LOADING: '加载进行中啊喵~';
+            case Status.SUCCESS: 
+            (<ArticleList articleItemsData={articleItems}
+                          articleItemsStatus={status}/>);
+            case Status.FAILURE: '加载失败啊喵!';
             default: throw new Error(`未知状态${status}`);
           }
         }
