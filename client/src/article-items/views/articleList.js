@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { ArticleItems } from './articleItems.js';
-import { view as Article } from '../../article-info/';
 
 const ArticleList = ({articleItemsData, articleItemsStatus}) => {
   return (
@@ -29,10 +28,6 @@ const ArticleList = ({articleItemsData, articleItemsStatus}) => {
             }
           }
         })
-      }
-      {
-        articleItemsStatus === 'Success' ? 
-        (<Route path="/articleinfo/:id" component={Article} />) : null
       }
     </React.Fragment>
   );

@@ -1,0 +1,75 @@
+/*css重置*/
+html, body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, th, tr, img, div, dl, dt, dd, input, label, figure {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", "Microsoft YaHei", sans-serif;
+}
+
+img {
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+input, select, textarea, button {
+  background: none;
+  /*解决输入框兼容问题*/
+  outline: none;
+  /*聚焦时样式*/
+  border: none;
+  /*盒子模型*/
+}
+
+textarea {
+  resize: none;
+}
+
+a {
+  text-decoration: none;
+}
+/* css重置完成 */
+
+.body {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.sideBar {
+  flex: 1
+}
+
+.mainBody {
+  flex: 3
+}
+
+.navBar {
+  display: block;
+  width: 100%;
+}
+
+.nav-ul {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav-ul > li {
+  width: 50px;
+}
+
+.article-item {
+  display: flex;
+}
+
+.article-item-ul {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

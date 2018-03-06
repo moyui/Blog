@@ -2,14 +2,14 @@ import React from 'react';
 
 const AboutMe = () => {
   return (
-    <div>
+    <React.Fragment>
       <img />
-      <h1>moyui末御</h1>
+      <h2>moyui末御</h2>
       <p>introduction</p>
-      <p>
+      <ul>
         <li><a href="https://github.com/moyui"><img /></a></li>
-      </p>
-    </div>
+      </ul>
+    </React.Fragment>
   );
 };
 

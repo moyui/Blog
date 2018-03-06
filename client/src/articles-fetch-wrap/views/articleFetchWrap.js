@@ -7,7 +7,7 @@ import * as articleWrapActions from '../actions.js';
 import * as Status from '../../status.js';
 
 const renderNum = { //定义选择文章显示的数量,part默认为15条，在服务器端修改
-  part: 15,
+  num: 15,
   all: 'all'
 }
 
@@ -16,11 +16,11 @@ class ArticleFetchWrap extends React.Component {
     super(...arguments);
     this.state = {
       articleItems: [],
-      status: ''
+      status: Status.LOADING,
     }
   }
 
-  async fetchAItems(type) {
+  async fetchAItems(num) {
     const apiUrl = 'http://127.0.0.1:8000/articleitems';
     const headers = new Headers();
     headers.append('Accept', 'application/json');
@@ -28,7 +28,7 @@ class ArticleFetchWrap extends React.Component {
     const init = {
       method: 'get',
       body: {
-        renderNum: type
+        renderNum: num
       },
       headers: headers,
       mode: 'cors'
@@ -40,15 +40,15 @@ class ArticleFetchWrap extends React.Component {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }
       const responseJson = await response.json();
-      this.setState({articleItems: responseJson, status: Status.SUCCESS});
+      this.setState({articleItems: responseJson.data, status: Status.SUCCESS});
     } catch(error) {
       this.setState({Status: status.FAILURE});
     }
   }
 
   componentDidMount() {
-    const type = renderNum.part;
-    this.props.renderNum(num); //
+    const num = renderNum.num;
+    this.props.renderNum(num); 
     this.fetchAItems(this.props.renderNum);  
   }
 
@@ -56,18 +56,18 @@ class ArticleFetchWrap extends React.Component {
     const {status, articleItems} = this.state;
 
     return (
-      <div> {
-        () => {
+      <React.Fragment>{
+        (() => {
           switch(status) {
-            case Status.LOADING: '加载进行中啊喵~';
+            case Status.LOADING: {return '加载进行中啊喵~'};
             case Status.SUCCESS: 
-            (<ArticleList articleItemsData={articleItems}
-                          articleItemsStatus={status}/>);
-            case Status.FAILURE: '加载失败啊喵!';
-            default: throw new Error(`未知状态${status}`);
+              return (<ArticleList articleItemsData={articleItems}
+                                   articleItemsStatus={status}/>);
+            case Status.FAILURE: {return '加载失败啊喵!'};
+            default: {throw new Error(`未知状态${status}`)};
           }
-        }
-      }</div>
+        })()
+      }</React.Fragment>
     )
   }
 }

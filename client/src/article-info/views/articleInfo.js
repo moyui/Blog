@@ -10,7 +10,7 @@ class ArticleInfo extends React.Component {
     super(...arguments);
     this.state = {
       articleInfo: {},
-      status: '',
+      status: Status.LOADING,
     }
   }
 
@@ -31,38 +31,38 @@ class ArticleInfo extends React.Component {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }
       const responseJson = await response.json();
-      this.setState({status: Status.SUCCESS, articleInfo: responseJson});
+      this.setState({status: Status.SUCCESS, articleInfo: responseJson.data});
     } catch(error) {
       this.setState({status: Status.FAILURE});
     }
   }
 
   componentDidMount() {
-    const articleMatch = this.props.match;//在articleList中利用:id匹配到的文章id
-    this.fetchAInfo(articleMatch.params.id);
+    const articleMatchId = this.props.match.params.id ? this.props.match.params.id : 'all';//在articleList中利用:id匹配到的文章id
+    console.log(articleMatchId);
+    this.fetchAInfo(articleMatchId);
   }
 
   render() {
     const {status, articleInfo} = this.state;
-
     return (
-      <div> {
-        () => {
+      <React.Fragment> {
+        (() => {
           switch(status) {
-            case Status.LOADING: '加载进行中啊喵~';
-            case Status.SUCCESS: (
+            case Status.LOADING: {return '加载进行中啊喵~'};
+            case Status.SUCCESS: {return (
               <React.Fragment>
-                <title>{articleInfo.title}</title>
+                <h3>{articleInfo.title}</h3>
                 <p>{articleInfo.page}</p>
-                <button><Link to={articleInfo.previousPage}>上一篇</Link></button>
-                <button><Link to={articleInfo.nextPage}>下一篇</Link></button>
+                <button><Link to={`${articleInfo.previousPage}`}>上一篇</Link></button>
+                <button><Link to={`${articleInfo.nextPage}`}>下一篇</Link></button>
               </React.Fragment>
-            );
-            case Status.FAILURE: '加载失败啊喵!';
-            default: throw new Error(`未知状态${this.status}`);
+            )};
+            case Status.FAILURE: {return '加载失败啊喵!'};
+            default: {throw new Error(`未知状态${this.status}`)};
           }
-        }
-      }</div>
+        })()
+      }</React.Fragment>
     )
   }
 }
