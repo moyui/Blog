@@ -21,15 +21,12 @@ class ArticleFetchWrap extends React.Component {
   }
 
   async fetchAItems(num) {
-    const apiUrl = 'http://127.0.0.1:8000/articleitems';
+    const apiUrl = `http://127.0.0.1:8000/articleitems?limit=${num}`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
     const init = {
       method: 'get',
-      body: {
-        renderNum: num
-      },
       headers: headers,
       mode: 'cors'
     };
@@ -42,14 +39,15 @@ class ArticleFetchWrap extends React.Component {
       const responseJson = await response.json();
       this.setState({articleItems: responseJson.data, status: Status.SUCCESS});
     } catch(error) {
-      this.setState({Status: status.FAILURE});
+      console.log(error);
+      this.setState({status: Status.FAILURE});
     }
   }
 
   componentDidMount() {
     const num = renderNum.num;
     this.props.renderNum(num); 
-    this.fetchAItems(this.props.renderNum);  
+    this.fetchAItems(this.props.articleNum.num);  
   }
 
   render() {
