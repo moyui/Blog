@@ -38,18 +38,21 @@ a {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  background-color: cyan;
 }
 
-.sideBar {
-  flex: 1
+.side-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.mainBody {
-  flex: 3
+.main-body {
+  flex: 3;
 }
 
-.navBar {
+.nav-bar {
   display: block;
   width: 100%;
 }
@@ -66,10 +69,21 @@ a {
 
 .article-item {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .article-item-ul {
   display: flex;
   justify-content: center;
-  width: 100%;
+}
+.article-item-ul > li {
+  width: 150px;
+}
+
+.article-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

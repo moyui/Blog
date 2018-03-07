@@ -46,7 +46,7 @@ class ArticleInfo extends React.Component {
   render() {
     const {status, articleInfo} = this.state;
     return (
-      <React.Fragment> {
+      <div className="article-info"> {
         (() => {
           switch(status) {
             case Status.LOADING: {return '加载进行中啊喵~'};
@@ -54,19 +54,22 @@ class ArticleInfo extends React.Component {
               <React.Fragment>
                 <h3>{articleInfo.title}</h3>
                 <p>{articleInfo.page}</p>
-                <button><Link to={`${articleInfo.previousPage}`}>上一篇</Link></button>
-                <button><Link to={`${articleInfo.nextPage}`}>下一篇</Link></button>
+                <nav>
+                  <button><Link to={`${articleInfo.previousPage}`}>上一篇</Link></button>
+                  <button><Link to={`${articleInfo.nextPage}`}>下一篇</Link></button>
+                </nav>
               </React.Fragment>
             )};
             case Status.FAILURE: {return '加载失败啊喵!'};
             default: {throw new Error(`未知状态${this.status}`)};
           }
         })()
-      }</React.Fragment>
+      }</div>
     )
   }
 }
 
 export default withRouter(ArticleInfo);
+
 
 
