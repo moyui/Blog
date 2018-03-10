@@ -87,3 +87,9 @@ a {
   flex-direction: column;
   align-items: center;
 }
+
+.my-header-img {
+  width: 100px;
+  height: 100px;
+  src: url('../image/header.jpg');
+}
