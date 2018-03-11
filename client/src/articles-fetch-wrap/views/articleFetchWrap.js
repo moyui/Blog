@@ -21,7 +21,7 @@ class ArticleFetchWrap extends React.Component {
   }
 
   async fetchAItems(num) {
-    const apiUrl = `http://127.0.0.1:8000/articleitems?limit=${num}`;
+    const apiUrl = `http://45.32.203.201:443/articleitems?limit=${num}`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');

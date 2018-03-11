@@ -3,7 +3,7 @@ import React from 'react';
 const AboutMe = () => {
   return (
     <React.Fragment>
-      <img className="my-header-img"/>
+      <img/>
       <h2>moyui末御</h2>
       <p>introduction</p>
       <ul>
