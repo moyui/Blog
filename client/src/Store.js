@@ -4,12 +4,14 @@ import createHistory from 'history/createBrowserHistory';
 import { routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 import { reducer as articleNumReducer } from './articles-fetch-wrap/';
+import { reducer as articleItemsReduer} from './constant/';
 
 const win = window;
 export const history = createHistory();
 
 const reducer = combineReducers({
   articleNum: articleNumReducer,
+  articleItem: articleItemsReduer,
   router: routerReducer
 });
 

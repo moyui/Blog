@@ -7,6 +7,8 @@ import { view as SideMenu } from './side-menu/';
 import { view as ArticleBodyWrap } from './articles-fetch-wrap/';
 import { view as ArticleInfo } from './article-info/';
 import { view as NotFound } from './not-found/';
+import { view as Archive } from './archive/';
+import { ArchiveItems } from './archive/views/archiveItems';
 
 const Blog = () => {
   return (
@@ -24,7 +26,7 @@ const Blog = () => {
             <Route path="/home" component={ArticleBodyWrap} />
             <Route path="/articleinfo/:id" component={ArticleInfo} />
             <Route path="/articleinfo" component={ArticleInfo} />
-            <Route path="/archive" />
+            <Route path="/archive" component={Archive} />
             <Route path="*" component={NotFound} />
           </Switch>
         </div>
