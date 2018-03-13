@@ -12,7 +12,7 @@ export const fetchHOC = (WrappedComponent) => {
 
     componentDidMount() {
       const articleNum = this.props.articleNum
-      fetchArticleItems(articleNum);
+      this.props.fetchArticleItems(articleNum);
     }
 
     render() {

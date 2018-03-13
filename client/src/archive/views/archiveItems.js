@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const ArchiveItems = ({name, list}) => {
   return (
     <div>
-      <li><Link to={`/archive/${name}`}>{name}</Link></li>
+      <h3><Link to={`/archive/${name}`}>{name}</Link></h3>
       <ul>
         {
           list.map((item) => {
