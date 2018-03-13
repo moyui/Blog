@@ -11,7 +11,7 @@ export const history = createHistory();
 
 const reducer = combineReducers({
   articleNum: articleNumReducer,
-  articleItem: articleItemsReduer,
+  articleItems: articleItemsReduer,
   router: routerReducer
 });
 

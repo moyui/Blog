@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Route, Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { ArticleItems } from './articleItems.js';
@@ -13,7 +12,7 @@ const ArticleList = ({articleItemsData, articleItemsStatus}) => {
           const status = item.status;//读取当前文章状态
           switch (status) {//根据状态渲染不同文章段
             case 'loading': {
-              return (<div>{item.show}</div>);
+              return (<div>加载进行中啊喵~</div>);
             }
             case 'success': {
               return (
@@ -21,7 +20,7 @@ const ArticleList = ({articleItemsData, articleItemsStatus}) => {
               );
             }
             case 'failure': {
-              return (<div>{item.show}</div>);
+              return (<div>加载失败啊喵!</div>);
             }
             default: {
               throw new Error('unexpected status ' + status);
@@ -37,4 +36,4 @@ ArticleList.propTypes = {
   articleItemsData: PropTypes.array.isRequired
 };
 
-export default ArticleList
+export default ArticleList;

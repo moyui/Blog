@@ -1,5 +1,5 @@
-import view from './views/articleFetchWrap.js';
+import wrap from './views/fetchHOC.js';
 import reducer from './reducer.js';
 import * as actions from './actions.js';
 
-export {reducer, actions, view};
+export {reducer, actions, wrap};
