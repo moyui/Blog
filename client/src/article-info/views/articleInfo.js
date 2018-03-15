@@ -39,7 +39,6 @@ class ArticleInfo extends React.Component {
 
   componentDidMount() {
     const articleMatchId = this.props.match.params.id ? this.props.match.params.id : 'all';//在articleList中利用:id匹配到的文章id
-    console.log(articleMatchId);
     this.fetchAInfo(articleMatchId);
   }
 

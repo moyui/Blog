@@ -4,7 +4,6 @@ import { Route, Link, withRouter } from 'react-router-dom';
 import { ArticleItems } from './articleItems.js';
 
 const ArticleList = ({articleData}) => {
-  console.log(articleData);
   return (
     <React.Fragment>
       {
