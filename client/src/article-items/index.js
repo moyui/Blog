@@ -1,3 +1,3 @@
-import view from './views/articleList.js';
+import view from './views/articleWrap.js';
 
 export {view};

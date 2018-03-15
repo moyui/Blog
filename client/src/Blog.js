@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import { view as NavBar} from './nav-bar/';
 import { view as SideMenu } from './side-menu/';
-import { view as ArticleItems } from './articles-items/';
+import { view as ArticleItems } from './article-items/';
 import { view as ArticleInfo } from './article-info/';
 import { view as NotFound } from './not-found/';
 import { view as Archive } from './archive/';

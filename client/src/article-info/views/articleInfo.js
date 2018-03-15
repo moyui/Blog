@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import * as Status from '../../status.js';
+import * as Status from '../../constant/status.js';
 
 class ArticleInfo extends React.Component {
   constructor() {

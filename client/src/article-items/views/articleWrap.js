@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { fetchHOC } from './fetchHOC/js';
-import { view as articleItems} from '../../article-items/';
+import { view as wrap } from '../../articles-fetch-wrap/';
+import { actions as fetchActions} from '../../constant/';
+import { ArticleList } from './articleList.js';
 
 const mapStateToProps = (state) => {
   return {
@@ -15,9 +16,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchArticleItems: (num) => {
-      dispatch(fetchAItems(num));
+      dispatch(fetchActions.fetchAItems(num));
     },
   }
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(fetchHOC(articleItems)));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(wrap(ArticleList)));

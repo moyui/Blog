@@ -1,3 +1,3 @@
-import view from './archiveList.js';
+import view from './views/archiveWrap.js';
 
 export {view};

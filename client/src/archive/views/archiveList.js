@@ -10,17 +10,20 @@ const ArchiveList = ({varieties}) => {
     <React.Fragment>
       <div>
         {
-          varieties.map((item, index) => {
-            <ArchiveItems 
-              key={id++} 
-              name={index} 
-              list={item} 
-            />
-          })
+          (() => {
+            for (const [key, value] of varieties.entries()) { //map遍历元素
+              return (
+                <ArchiveItems 
+                  name={key}
+                  list={value}
+                />
+              );
+            }
+          })()
         }
       </div>
     </React.Fragment>
   );
 }
 
-export default ArchiveList;
+export {ArchiveList};

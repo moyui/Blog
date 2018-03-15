@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { ArticleItems } from './articleItems.js';
 
-const ArticleList = ({articleItemsData, articleItemsStatus}) => {
+const ArticleList = ({articleData}) => {
+  console.log(articleData);
   return (
     <React.Fragment>
       {
-        articleItemsData.map((item) => {
+        articleData.map((item) => {
           const status = item.status;//读取当前文章状态
           switch (status) {//根据状态渲染不同文章段
             case 'loading': {
@@ -32,8 +32,4 @@ const ArticleList = ({articleItemsData, articleItemsStatus}) => {
   );
 };
 
-ArticleList.propTypes = {
-  articleItemsData: PropTypes.array.isRequired
-};
-
-export default ArticleList;
+export {ArticleList};
