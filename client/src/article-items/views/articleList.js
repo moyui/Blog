@@ -5,6 +5,7 @@ import { ArticleItems } from './articleItems.js';
 
 const ArticleList = ({articleData}) => {
   return (
+    console.log('test');
     <React.Fragment>
       {
         articleData.map((item) => {
