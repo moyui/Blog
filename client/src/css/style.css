@@ -2,10 +2,21 @@
 html, body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, th, tr, img, div, dl, dt, dd, input, label, figure {
   margin: 0;
   padding: 0;
+
+}
+
+html {
+  font-size: 100%;
+}
+
+*,*:after,*:before {
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
 }
 
 body {
   font-family: "Arial", "Microsoft YaHei", sans-serif;
+  font-size: 1em;
 }
 
 img {
@@ -23,6 +34,8 @@ input, select, textarea, button {
   /*聚焦时样式*/
   border: none;
   /*盒子模型*/
+  vertical-align: middle
+  /*对不齐的问题*/
 }
 
 textarea {
@@ -31,6 +44,14 @@ textarea {
 
 a {
   text-decoration: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "\200b";
+  display: block;
+  height: 0;
+  clear: both;
 }
 /* css重置完成 */
 
