@@ -12,9 +12,8 @@ import { view as Archive } from './archive/';
 const Blog = () => {
   return (
     <React.Fragment>
-      <nav className="nav-bar">
-        <NavBar />
-      </nav>
+      <NavBar />
+      <div className="brand"></div>
       <div className="body">
         <div className="side-bar">
           <SideMenu />

@@ -1,9 +1,11 @@
 import React from 'react';
 
+import header from '../../image/header.jpg'
+
 const AboutMe = () => {
   return (
     <React.Fragment>
-      <img/>
+      <img className="my-header-img" src={header} />
       <h2>moyui末御</h2>
       <p>introduction</p>
       <ul>

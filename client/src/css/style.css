@@ -16,7 +16,6 @@ html {
 
 body {
   font-family: "Arial", "Microsoft YaHei", sans-serif;
-  font-size: 1em;
 }
 
 img {
@@ -55,13 +54,88 @@ a {
 }
 /* css重置完成 */
 
-.body {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  background-color: cyan;
+/*以下是桌面端部分*/
+@media (min-width: 720px) and (max-width: 1280px) {
+  body {
+    font-size: 0.875em;
+  }
+
+  .nav-bar {
+    padding-left: 5em;
+  }
 }
 
+@media (min-width: 1280px) and (max-width: 1920px) {
+  body {
+    font-size: 1em;
+  }
+  
+  .nav-bar {
+    padding-left: 6.25em;
+  }
+}
+
+@media (min-width: 1920px) {
+  body {
+    font-size: 1.125em;
+  }
+
+  .nav-bar {
+    padding-left: 7.8125em;
+  }
+}
+
+body {
+  position: relative;
+}
+
+/*导航栏开始*/
+.nav-bar {
+  width: 100%;
+  display: block;
+  position: fixed;
+  font-size: 1em;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.nav-ul {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav-ul > li > a {
+  display: inline-block;
+  color: white;
+  width: 5em;
+  text-align: center;
+  line-height: 3.125em;
+  height: 3.125em;
+}
+
+.nav-ul > li > a:hover {
+  background-color: white;
+  color: black;
+}
+
+/*头图*/
+.brand {
+  background-image: url("../image/brand.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+/*主题部分开始*/
+.body {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 3em;
+  padding-left: 6.25em;
+  padding-right: 6.25em;
+}
+
+/*侧栏开始*/
 .side-bar {
   flex: 1;
   display: flex;
@@ -69,23 +143,21 @@ a {
   align-items: center;
 }
 
+.my-header-img {
+  width: 9.375em;
+  height: 9.375em;
+}
+
+
+
+
+
+
+
+
+
 .main-body {
   flex: 3;
-}
-
-.nav-bar {
-  display: block;
-  width: 100%;
-}
-
-.nav-ul {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.nav-ul > li {
-  width: 50px;
 }
 
 .article-item {
@@ -99,7 +171,7 @@ a {
   justify-content: center;
 }
 .article-item-ul > li {
-  width: 150px;
+  width: 9.375em;
 }
 
 .article-info {
@@ -107,9 +179,4 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.my-header-img {
-  width: 100px;
-  height: 100px;
 }
