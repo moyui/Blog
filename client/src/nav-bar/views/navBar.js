@@ -1,60 +1,55 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TransitionGroup from 'react-addons-css-transition-group';
+
+import { throttle } from '../../constant/throttle.js';
 
 class NavBar extends React.Component {
   constructor() {
     super(...arguments);
 
     this.state = {
-      preLocation: 0
+      switchHide: false
     };
 
-    this.handleScroll = this.handleScroll.bind(this);
-    this.refNavBar = this.refNavBar.bind(this); 
+    this.handleWheel = throttle(this.handleWheel.bind(this));
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('wheel', this.handleWheel);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return !(nextState.switchHide === this.state.switchHide);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('wheel', this.handleWheel);
   }
 
-  handleScroll(event) {
-    const navBar = this.navBar;
-    let req;
-
-    const preLocation = this.state.preLocation;
-    req = window.requestAnimationFrame(() => {
-      const presentLocation = document.documentElement.scrollTop;
-      const moveDistance = presentLocation - preLocation;
-      if (moveDistance > 0) {
-        navBar.style.visibility = "hidden";
-      } else if (moveDistance < 0) {
-        navBar.style.visibility = "visible";
-      }
-
-      this.setState({
-        preLocation: presentLocation
-      })
-      window.cancelAnimationFrame(req);
+  handleWheel(event) {
+    console.log(event);
+    const state = event.deltaY > 0 ? false : true;
+    this.setState({
+      switchHide: state
     });
   }
 
-  refNavBar(node) {
-    this.navBar = node;
-  }
-  
   render() {
+    const navBarStyle = {
+      'visibility': (this.state.switchHide) ? 'hidden' : 'visible'
+    };
+
     return (
-      <nav className="nav-bar" ref={this.refNavBar}>
-        <ul className="nav-ul">
-          <li><Link to="/home">首页</Link></li>
-          <li><Link to="/articleinfo">文章</Link></li>
-          <li><Link to="/archive">归档</Link></li>
-        </ul>
-      </nav>
+      <TransitionGroup transitionName="fade">
+        <nav className="nav-bar" style={navBarStyle}>
+          <ul className="nav-ul">
+            <li><Link to="/home">首页</Link></li>
+            <li><Link to="/articleinfo">文章</Link></li>
+            <li><Link to="/archive">归档</Link></li>
+          </ul>
+        </nav>
+      </TransitionGroup>
     )
   }
 }

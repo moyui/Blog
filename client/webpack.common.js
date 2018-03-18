@@ -15,7 +15,8 @@ module.exports = {
       'react-redux',
       'react-router',
       'redux-thunk',
-      'react-router-redux'
+      'react-router-redux',
+      'react-addons-css-transition-group'
     ]
   },
   module: {
