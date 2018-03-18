@@ -12,7 +12,7 @@ class NavBar extends React.Component {
       switchHide: false
     };
 
-    this.handleWheel = throttle(this.handleWheel.bind(this));
+    this.handleWheel = throttle(this.handleWheel.bind(this), 100);
   }
 
   componentDidMount() {
