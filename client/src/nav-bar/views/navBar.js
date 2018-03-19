@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import { throttle } from '../../constant/throttle.js';
 
@@ -12,7 +12,7 @@ class NavBar extends React.Component {
       switchHide: false
     };
 
-    this.handleWheel = throttle(this.handleWheel.bind(this), 100);
+    this.handleWheel = throttle(this.handleWheel.bind(this), 1000/60);
   }
 
   componentDidMount() {
@@ -28,28 +28,31 @@ class NavBar extends React.Component {
   }
 
   handleWheel(event) {
-    console.log(event);
-    const state = event.deltaY > 0 ? false : true;
+    const state = event.deltaY > 0 ? true : false;
     this.setState({
       switchHide: state
     });
   }
 
   render() {
-    const navBarStyle = {
-      'visibility': (this.state.switchHide) ? 'hidden' : 'visible'
-    };
-
     return (
-      <TransitionGroup transitionName="fade">
-        <nav className="nav-bar" style={navBarStyle}>
-          <ul className="nav-ul">
-            <li><Link to="/home">首页</Link></li>
-            <li><Link to="/articleinfo">文章</Link></li>
-            <li><Link to="/archive">归档</Link></li>
-          </ul>
-        </nav>
-      </TransitionGroup>
+      <CSSTransitionGroup 
+        transitionName="slide"
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}>
+        {
+          (this.state.switchHide) ? null : 
+          (
+            <nav className="nav-bar">
+              <ul className="nav-ul">
+                <li><Link to="/home">首页</Link></li>
+                <li><Link to="/articleinfo">文章</Link></li>
+                <li><Link to="/archive">归档</Link></li>
+              </ul>
+            </nav>
+          )
+        }
+      </CSSTransitionGroup>
     )
   }
 }

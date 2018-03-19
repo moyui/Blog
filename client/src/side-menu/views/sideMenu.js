@@ -3,8 +3,8 @@ import { AboutMe } from './aboutMe.js';
 
 export default () => {
   return (
-    <React.Fragment>
+    <div className="side-bar">
       <AboutMe />
-    </React.Fragment>
+    </div>
   );
 };

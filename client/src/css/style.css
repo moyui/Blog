@@ -1,5 +1,5 @@
 /*css重置*/
-html, body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, th, tr, img, div, dl, dt, dd, input, label, figure {
+html, body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, th, tr, img, div, dl, dt, dd, input, label, figure, button {
   margin: 0;
   padding: 0;
 
@@ -60,8 +60,9 @@ a {
     font-size: 0.875em;
   }
 
-  .nav-bar {
-    padding-left: 5em;
+  .nav-bar,
+  .body {
+    padding: 0 2.75em;
   }
 }
 
@@ -70,8 +71,9 @@ a {
     font-size: 1em;
   }
   
-  .nav-bar {
-    padding-left: 6.25em;
+  .nav-bar,
+  .body {
+    padding: 0 3.5em;
   }
 }
 
@@ -80,8 +82,9 @@ a {
     font-size: 1.125em;
   }
 
-  .nav-bar {
-    padding-left: 7.8125em;
+  .nav-bar,
+  .body {
+    padding: 0 4.25em;
   }
 }
 
@@ -94,6 +97,7 @@ body {
   width: 100%;
   display: block;
   position: fixed;
+  top: 0;
   font-size: 1em;
   background-color: black;
   opacity: 0.5;
@@ -118,6 +122,24 @@ body {
   color: black;
 }
 
+.slide-enter {
+  top: -3.125em;
+}
+
+.slide-enter.slide-enter-active {
+  top: 0;
+  transition: top 500ms ease-in
+}
+
+.slide-leave {
+  top: 0;
+}
+
+.slide-leave.slide-leave-active {
+  top: -3.125em;
+  transition: top 200ms ease-in
+}
+
 /*头图*/
 .brand {
   background-image: url("../image/brand.png");
@@ -129,18 +151,23 @@ body {
 /*主题部分开始*/
 .body {
   display: flex;
-  justify-content: flex-start;
-  padding-top: 3em;
-  padding-left: 6.25em;
-  padding-right: 6.25em;
+  justify-content: space-around;
+  background-color: #EFEFEF;
+  padding-top: 3.125em;
 }
 
 /*侧栏开始*/
 .side-bar {
   flex: 1;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 0.25em;
+  position: sticky;
+  top: 4em;
+  margin: 0 1vw;
+  background-color: white;
 }
 
 .my-header-img {
@@ -148,30 +175,33 @@ body {
   height: 9.375em;
 }
 
-
-
-
-
-
-
-
-
+/*正文部分*/
 .main-body {
-  flex: 3;
+  flex: 2;
+  margin: 0 1vw;
 }
 
 .article-item {
+  background-color: white;
+  border-radius: 0.25em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 4vh 0;
+}
+
+.article-item:first-child,
+.article-item:last-child {
+  margin: 0;
 }
 
 .article-item-ul {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 .article-item-ul > li {
   width: 9.375em;
+  flex: 1;
 }
 
 .article-info {

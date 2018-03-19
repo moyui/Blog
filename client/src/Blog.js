@@ -12,12 +12,9 @@ import { view as Archive } from './archive/';
 const Blog = () => {
   return (
     <React.Fragment>
-      <NavBar />
       <div className="brand"></div>
       <div className="body">
-        <div className="side-bar">
-          <SideMenu />
-        </div>
+        <SideMenu />
         <div className="main-body">
           <Switch>
             <Route exact path="/" component={ArticleItems} />
@@ -29,6 +26,7 @@ const Blog = () => {
           </Switch>
         </div>
       </div>
+      <NavBar />
     </React.Fragment>
   );
 };
