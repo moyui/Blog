@@ -2,7 +2,10 @@
 html, body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, th, tr, img, div, dl, dt, dd, input, label, figure, button {
   margin: 0;
   padding: 0;
+}
 
+input, textarea, select, button {
+  font-size: 0;
 }
 
 html {
@@ -59,21 +62,11 @@ a {
   body {
     font-size: 0.875em;
   }
-
-  .nav-bar,
-  .body {
-    padding: 0 2.75em;
-  }
 }
 
 @media (min-width: 1280px) and (max-width: 1920px) {
   body {
     font-size: 1em;
-  }
-  
-  .nav-bar,
-  .body {
-    padding: 0 3.5em;
   }
 }
 
@@ -81,15 +74,14 @@ a {
   body {
     font-size: 1.125em;
   }
-
-  .nav-bar,
-  .body {
-    padding: 0 4.25em;
-  }
 }
 
 body {
   position: relative;
+}
+
+input, textarea, select, button {
+  font-size: 1em;
 }
 
 /*导航栏开始*/
@@ -101,6 +93,7 @@ body {
   font-size: 1em;
   background-color: black;
   opacity: 0.5;
+  padding: 0 7.5vw;
 }
 
 .nav-ul {
@@ -151,43 +144,71 @@ body {
 /*主题部分开始*/
 .body {
   display: flex;
-  justify-content: space-around;
   background-color: #EFEFEF;
-  padding-top: 3.125em;
+  padding: 3.125em 7.5vw 0 7.5vw;
 }
 
 /*侧栏开始*/
 .side-bar {
   flex: 1;
   height: 100%;
+  min-width: 9.375em;
+  max-width: 30em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 0.25em;
+  border-radius: 0.5em;
   position: sticky;
   top: 4em;
-  margin: 0 1vw;
   background-color: white;
+  margin-right: 1vw;
+  padding: 1vw 0;
+}
+
+.side-bar > * {
+  margin: 1vh 0;
 }
 
 .my-header-img {
   width: 9.375em;
   height: 9.375em;
+  border-radius: 50%;  
+  margin: 0 0 1vh 0;
+}
+
+.my-link {
+  display: flex;
+  flex-direction: row;
+  margin: 1vh 0 0 0;
+}
+
+.my-link > li {
+  margin: 0 1em;
+}
+
+.my-icon {
+  color: black;
+}
+
+.my-icon:hover,
+.my-icon:active {
+  color: skyblue;
 }
 
 /*正文部分*/
 .main-body {
   flex: 2;
-  margin: 0 1vw;
+  margin-left: 1vw;
 }
 
 .article-item {
   background-color: white;
-  border-radius: 0.25em;
+  border-radius: 0.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 4vh 0;
+  margin: 2vh 0;
+  padding: 1vw 0;
 }
 
 .article-item:first-child,
@@ -195,13 +216,34 @@ body {
   margin: 0;
 }
 
+.article-item > * {
+  margin: 0.5vh 0;
+}
+
+.article-item > *:first-child {
+  margin: 0 0 0.5vh 0;
+}
+
+.article-item > *:last-child {
+  margin: 0.5vh 0 0 0;
+}
+
 .article-item-ul {
   display: flex;
-  justify-content: space-around;
+  width: 100%;
+  justify-content: center;
 }
 .article-item-ul > li {
-  width: 9.375em;
-  flex: 1;
+  font-size: 0.875em;
+  margin: 0 1vw;
+}
+
+.article-item-readtimes {
+  color: skyblue;
+}
+
+.article-item-archive {
+  color: red;
 }
 
 .article-info {
@@ -209,4 +251,37 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.article-item-abstract {
+  color: gray;
+}
+
+.article-item-title>a {
+  font-size: 1.375em;
+  color: black;
+}
+
+.article-item-title>a:hover,
+.article-item-title>a:active {
+  color: skyblue;
+}
+
+.article-item-all>a {
+  font-size: 1em;
+  border-radius: 0.5em;
+  display: inline-block;
+  background-color: white;
+  color: skyblue;
+  width: 6.25em;
+  height: 1.875em;
+  line-height: 1.875em;
+  border: 1px solid skyblue;
+}
+
+.article-item-all>a:hover,
+.article-item-all>a:active {
+  background-color: gray;
+  color: white;
+  border-color: transparent;
 }

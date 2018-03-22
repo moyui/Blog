@@ -11,7 +11,11 @@ const ArticleList = ({articleData}) => {
           const status = item.status;//读取当前文章状态
           switch (status) {//根据状态渲染不同文章段
             case 'loading': {
-              return (<div>加载进行中啊喵~</div>);
+              return (
+                <div className="article-item">
+                  <h3 className="article-item-title">{'加载进行中啊喵~'}</h3>
+                </div>
+              );
             }
             case 'success': {
               return (
@@ -19,7 +23,11 @@ const ArticleList = ({articleData}) => {
               );
             }
             case 'failure': {
-              return (<div>加载失败啊喵!</div>);
+              return (
+                <div className="article-item">
+                  <h3 className="article-item-title">{'加载失败啊喵!'}</h3>
+                </div>
+              );
             }
             default: {
               throw new Error('unexpected status ' + status);

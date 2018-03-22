@@ -7,12 +7,14 @@ const ArticleItems = ({id, title, archive, date, readTimes, abstract}) => {
     <div className="article-item">
       <h3 className="article-item-title"><Link to={`/articleinfo/${id}`}>{title}</Link></h3>
       <ul className="article-item-ul">
-        <li>{`阅读次数：${readTimes}`}</li>
-        <li>{`日期：${date}`}</li>
-        <li>{`归档：${archive}`}</li>
+        <li className="article-item-readtimes">{`阅读次数：${readTimes}`}</li>
+        <li className="article-item-date">{`日期：${date}`}</li>
+        <li className="article-item-archive">{`归档于：${archive}`}</li>
       </ul>
-      <p>{abstract}</p>
-      <button><Link to={`/articleinfo/${id}`}>阅读全文</Link></button>
+      <br />
+      <p className="article-item-abstract">{abstract}</p>
+      <br />
+      <button className="article-item-all"><Link to={`/articleinfo/${id}`}>阅读全文</Link></button>
     </div>
   );
 };

@@ -44,11 +44,13 @@ class ArticleInfo extends React.Component {
 
   render() {
     const {status, articleInfo} = this.state;
+    console.log(this.state);
+    console.log(articleInfo);
     return (
       <div className="article-info"> {
         (() => {
           switch(status) {
-            case Status.LOADING: {return '加载进行中啊喵~'};
+            case Status.LOADING: {return (<div>{'加载进行中啊喵~'}</div>)};
             case Status.SUCCESS: {return (
               <React.Fragment>
                 <h3>{articleInfo.title}</h3>
@@ -59,7 +61,7 @@ class ArticleInfo extends React.Component {
                 </nav>
               </React.Fragment>
             )};
-            case Status.FAILURE: {return '加载失败啊喵!'};
+          case Status.FAILURE: {return (<div>{'加载失败啊喵!'}</div>)};
             default: {throw new Error(`未知状态${this.status}`)};
           }
         })()

@@ -15,94 +15,27 @@ app.use(async (ctx) => {
         {
           id: 1,
           status: 'success',
-          title: '百度',
-          archive: '网址',
-          date: '2018/2/28',
-          readTimes: '1',
-          abstract: '这是百度首页',
-        },
-        {
-          id: 2,
-          status: 'success',
-          title: '谷歌',
-          archive: '网址',
-          date: '2018/3/1',
-          readTimes: '1',
-          abstract: '这是谷歌首页',
-        },
-        {
-          id: 3,
-          status: 'success',
-          title: '百度',
-          archive: '网址',
-          date: '2018/2/28',
-          readTimes: '1',
-          abstract: '这是百度首页',
-        },
-        {
-          id: 4,
-          status: 'success',
-          title: '谷歌',
-          archive: '网址',
-          date: '2018/3/1',
-          readTimes: '1',
-          abstract: '这是谷歌首页',
-        },
-        {
-          id: 5,
-          status: 'success',
-          title: '百度',
-          archive: '网址',
-          date: '2018/2/28',
-          readTimes: '1',
-          abstract: '这是百度首页',
-        },
-        {
-          id: 6,
-          status: 'success',
-          title: '谷歌',
-          archive: '网址',
-          date: '2018/3/1',
-          readTimes: '1',
-          abstract: '这是谷歌首页',
-        },
-        {
-          id: 7,
-          status: 'success',
-          title: '百度',
-          archive: '网址',
-          date: '2018/2/28',
-          readTimes: '1',
-          abstract: '这是百度首页',
-        },
-        {
-          id: 8,
-          status: 'success',
-          title: '谷歌',
-          archive: '网址',
-          date: '2018/3/1',
-          readTimes: '1',
-          abstract: '这是谷歌首页',
-        },
-        {
-          id: 9,
-          status: 'success',
-          title: '百度',
-          archive: '网址',
-          date: '2018/2/28',
-          readTimes: '1',
-          abstract: '这是百度首页',
-        },
-        {
-          id: 10,
-          status: 'success',
-          title: '谷歌',
-          archive: '网址',
-          date: '2018/3/1',
-          readTimes: '1',
-          abstract: '这是谷歌首页',
+          title: 'Hello World!',
+          archive: '杂项',
+          date: '2018/3/22',
+          readTimes: 'NaN',
+          abstract: '嘛，程序员的第一次都是Hello World吧！',
         }
       ]
+    };
+    ctx.body = JSON.stringify(returnData);
+  } else if (path === '/articleinfo/1' && ctx.method === 'GET') {
+    const data = ctx.request.path;
+    ctx.status = 200;
+    ctx.set('Content-Type', 'application/json');
+    const returnData = {
+      data: {
+          status: 'success',
+          title: 'Hello World!',
+          page: '嘛，程序员的第一次都是Hello World吧!等下会有自我介绍的(等下不知道要几天后了',
+          previousPage: 'No',
+          nextPage: 'No',
+      }
     };
     ctx.body = JSON.stringify(returnData);
   }

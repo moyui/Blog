@@ -16,7 +16,11 @@ module.exports = {
       'react-router',
       'redux-thunk',
       'react-router-redux',
-      'react-transition-group'
+      'react-transition-group',
+      '@fortawesome/fontawesome',
+      '@fortawesome/react-fontawesome',
+      '@fortawesome/fontawesome-free-brands',
+      '@fortawesome/fontawesome-free-solid'
     ]
   },
   module: {

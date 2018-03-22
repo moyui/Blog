@@ -25,13 +25,25 @@ const fetchHOC = (WrappedComponent) => {
           {
             (() => {
               switch(status) {
-                case Status.LOADING: {return '加载进行中啊喵~'};
+                case Status.LOADING: {
+                  return (                 
+                    <div className="article-item">
+                      <h3 className="article-item-title">{'加载进行中啊喵~'}</h3>
+                    </div>
+                  );
+                }
                 case Status.SUCCESS: 
                   return (<WrappedComponent 
                             articleData={data} 
                             varieties={varieties} 
                           />);
-                case Status.FAILURE: {return '加载失败啊喵!'};
+                case Status.FAILURE: {
+                  return (                
+                    <div className="article-item">
+                      <h3 className="article-item-title">{'加载失败啊喵!'}</h3>
+                    </div>
+                  );
+                }
                 default: {throw new Error(`未知状态${status}`)};
               }
            })()
