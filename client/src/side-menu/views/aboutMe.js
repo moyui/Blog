@@ -1,7 +1,6 @@
 import React from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
-import faWeibo from '@fortawesome/fontawesome-free-brands/faWeibo';
+import { faGithub, faWeibo } from '@fortawesome/fontawesome-free-brands';
 
 import header from '../../image/header.jpg'
 

@@ -13,7 +13,9 @@ module.exports = merge(common, {
     contentBase: './assets/dist',
     hot: true,
     inline: true,
-    historyApiFallback: true
+    historyApiFallback: {
+      index: './assets/dist'
+    }
   },
   plugins: [
     new webpack.NamedModulesPlugin(),

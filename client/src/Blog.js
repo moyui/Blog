@@ -10,10 +10,13 @@ import { view as NotFound } from './not-found/';
 import { view as Archive } from './archive/';
 
 const Blog = () => {
+  const classPerfix = 'root';
+
   return (
     <React.Fragment>
-      <div className="brand"></div>
-      <div className="body">
+      <NavBar key={`${classPerfix}-navbar`}/>
+      <div key={`${classPerfix}-brand`} className="brand"></div>
+      <div key={`${classPerfix}-body`} className="body">
         <SideMenu />
         <div className="main-body">
           <Switch>
@@ -26,7 +29,6 @@ const Blog = () => {
           </Switch>
         </div>
       </div>
-      <NavBar />
     </React.Fragment>
   );
 };

@@ -27,7 +27,7 @@ app.use(async (ctx) => {
   } else if (path === '/articleinfo/1' && ctx.method === 'GET') {
     const data = ctx.request.path;
     ctx.status = 200;
-    ctx.set('Content-Type', 'application/json');
+    ctx.set('Content-Type', 'application/json; text/html');
     const returnData = {
       data: {
           status: 'success',

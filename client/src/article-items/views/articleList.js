@@ -1,11 +1,18 @@
 import React from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 import { ArticleItems } from './articleItems.js';
 
 const ArticleList = ({articleData}) => {
   return (
     <React.Fragment>
+      <CSSTransitionGroup
+        transitionName="push"
+        transitionEnterTimeout={1000}
+        transitionLeaveTimeout={700}
+        transitionAppear={true}
+        transitionAppearTimeout={1000}>
       {
         articleData.map((item) => {
           const status = item.status;//读取当前文章状态
@@ -35,6 +42,7 @@ const ArticleList = ({articleData}) => {
           }
         })
       }
+      </CSSTransitionGroup>
     </React.Fragment>
   );
 };

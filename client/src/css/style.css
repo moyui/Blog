@@ -13,8 +13,8 @@ html {
 }
 
 *,*:after,*:before {
- -webkit-box-sizing: border-box;
- box-sizing: border-box;
+ -webkit-box-sizing: content-box;
+ box-sizing: content-box;
 }
 
 body {
@@ -93,7 +93,7 @@ input, textarea, select, button {
   font-size: 1em;
   background-color: black;
   opacity: 0.5;
-  padding: 0 7.5vw;
+  padding-left: 7.5vw;
 }
 
 .nav-ul {
@@ -101,18 +101,20 @@ input, textarea, select, button {
   justify-content: flex-start;
 }
 
-.nav-ul > li > a {
+.nav-ul a {
   display: inline-block;
   color: white;
   width: 5em;
   text-align: center;
   line-height: 3.125em;
   height: 3.125em;
+  transition: all 700ms;
 }
 
-.nav-ul > li > a:hover {
+.nav-ul a:hover {
   background-color: white;
   color: black;
+  transition: all 500ms;
 }
 
 .slide-enter {
@@ -161,38 +163,41 @@ input, textarea, select, button {
   position: sticky;
   top: 4em;
   background-color: white;
+  padding: 1vh 0;
   margin-right: 1vw;
-  padding: 1vw 0;
 }
 
 .side-bar > * {
-  margin: 1vh 0;
+  padding: 1vh 0;
 }
 
 .my-header-img {
   width: 9.375em;
   height: 9.375em;
-  border-radius: 50%;  
-  margin: 0 0 1vh 0;
+  border-radius: 50%;
 }
 
 .my-link {
   display: flex;
-  flex-direction: row;
-  margin: 1vh 0 0 0;
 }
 
-.my-link > li {
-  margin: 0 1em;
+.my-link li {
+  padding: 0 1em;
+}
+
+.my-link a {
+  display: inline-block;
 }
 
 .my-icon {
   color: black;
+  transition: all 700ms;
 }
 
 .my-icon:hover,
 .my-icon:active {
   color: skyblue;
+  transition: color 500ms
 }
 
 /*正文部分*/
@@ -202,30 +207,64 @@ input, textarea, select, button {
 }
 
 .article-item {
+  position: relative;
   background-color: white;
   border-radius: 0.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2vh 0;
-  padding: 1vw 0;
-}
-
-.article-item:first-child,
-.article-item:last-child {
-  margin: 0;
+  padding: 1vh 0;
 }
 
 .article-item > * {
-  margin: 0.5vh 0;
+  padding: 1vh 0;
 }
 
-.article-item > *:first-child {
-  margin: 0 0 0.5vh 0;
+.article-item-title a {
+  position: relative;
+  font-size: 1.375em;
+  color: black;
 }
 
-.article-item > *:last-child {
-  margin: 0.5vh 0 0 0;
+.article-item-title a::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0.1em;
+  background: black;
+  flex: 1;
+  top: 100%;
+  left: 50%;
+  transition: all 300ms;
+}
+
+.article-item-title a:hover::after,
+.article-item-title a:active::after {
+  width: 100%;
+  left: 0%;
+  transition: all 500ms;
+}
+
+
+.article-item-all a {
+  font-size: 1em;
+  border-radius: 0.5em;
+  display: inline-block;
+  background-color: white;
+  color: skyblue;
+  width: 6.25em;
+  height: 1.875em;
+  line-height: 1.875em;
+  border: 1px solid skyblue;
+  transition: all 700ms;
+}
+
+.article-item-all a:hover,
+.article-item-all a:active {
+  background-color: gray;
+  color: white;
+  border-color: transparent;
+  transition: all 500ms
 }
 
 .article-item-ul {
@@ -233,9 +272,9 @@ input, textarea, select, button {
   width: 100%;
   justify-content: center;
 }
-.article-item-ul > li {
+.article-item-ul li {
   font-size: 0.875em;
-  margin: 0 1vw;
+  padding: 0 1em;
 }
 
 .article-item-readtimes {
@@ -246,42 +285,32 @@ input, textarea, select, button {
   color: red;
 }
 
-.article-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .article-item-abstract {
   color: gray;
 }
 
-.article-item-title>a {
-  font-size: 1.375em;
-  color: black;
+.push-enter,
+.push-appear {
+  opacity: 0;
 }
 
-.article-item-title>a:hover,
-.article-item-title>a:active {
-  color: skyblue;
+.push-enter.push-enter-active,
+.push-appear.push-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in
 }
 
-.article-item-all>a {
-  font-size: 1em;
-  border-radius: 0.5em;
-  display: inline-block;
-  background-color: white;
-  color: skyblue;
-  width: 6.25em;
-  height: 1.875em;
-  line-height: 1.875em;
-  border: 1px solid skyblue;
+.push-leave {
+  opacity: 1;
 }
 
-.article-item-all>a:hover,
-.article-item-all>a:active {
-  background-color: gray;
-  color: white;
-  border-color: transparent;
+.push-leave.push-leave-active {
+  opacity: 0;
+  transition: opacity 700ms ease-out
+}
+
+/*文章主题部分*/
+.article-info {
+  flex-direction: column;
+  align-items: center;
 }
