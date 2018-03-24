@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { HashRouter as Router } from 'react-router-dom';
+
 
 import Blog from './Blog.js';
-import store, { history } from './Store.js';
-import { ConnectedRouter } from 'react-router-redux'
+import store from './Store.js';
 
 import './css/style.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <Router>
       <Blog />
-    </ConnectedRouter>
+    </Router>
   </Provider>,
   document.getElementById('root')
 )

@@ -1,21 +1,17 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import createHistory from 'history/createBrowserHistory';
-import { routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 import { reducer as articleNumReducer } from './articles-fetch-wrap/';
 import { reducer as articleItemsReduer} from './constant/';
 
 const win = window;
-export const history = createHistory();
 
 const reducer = combineReducers({
   articleNum: articleNumReducer,
   articleItems: articleItemsReduer,
-  router: routerReducer
 });
 
-const middlewares = [thunkMiddleware, routerMiddleware(history)];
+const middlewares = [thunkMiddleware];
 if (process.env.NODE_ENV !== 'production') {
   middlewares.push(require('redux-immutable-state-invariant').default());
 }
