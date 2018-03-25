@@ -3,16 +3,10 @@
   "env": {
     "development": {
     "plugins": [
-      ["react-transform", {
-       "transforms": [{
-         "transform": "react-transform-hmr",
-         "imports": ["react"],
-         "locals": ["module"]
-       }]
-     }],
       ["transform-object-rest-spread"],
       ["transform-async-to-generator"],
-      ["transform-runtime"]
+      ["transform-runtime"],
+      ["react-hot-loader/babel"]
   ]}
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
+import { hot } from 'react-hot-loader'
 
 import { view as NavBar} from './nav-bar/';
 import { view as SideMenu } from './side-menu/';
@@ -33,4 +34,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default hot(module)(Blog);
