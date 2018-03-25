@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 import { fetchAItems } from '../../constant/actions.js';
 import { setNum } from '../actions.js';
@@ -22,13 +23,19 @@ const fetchHOC = (WrappedComponent) => {
       
       return (
         <React.Fragment>
+          <CSSTransitionGroup
+            transitionName="push"
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={700}
+            transitionAppear={true}
+            transitionAppearTimeout={1000}>
           {
             (() => {
               switch(status) {
                 case Status.LOADING: {
                   return (                 
                     <div className="article-item">
-                      <h3 className="article-item-title">{'加载进行中啊喵~'}</h3>
+                      <p className="article-item-abstract">{'加载进行中啊喵~'}</p>
                     </div>
                   );
                 }
@@ -40,7 +47,7 @@ const fetchHOC = (WrappedComponent) => {
                 case Status.FAILURE: {
                   return (                
                     <div className="article-item">
-                      <h3 className="article-item-title">{'加载失败啊喵!'}</h3>
+                      <p className="article-item-abstract">{'加载失败啊喵!'}</p>
                     </div>
                   );
                 }
@@ -48,6 +55,7 @@ const fetchHOC = (WrappedComponent) => {
               }
            })()
           }
+          </CSSTransitionGroup>
         </React.Fragment>
       );
     }

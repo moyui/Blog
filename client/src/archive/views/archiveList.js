@@ -1,14 +1,18 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 import { ArchiveItems } from './archiveItems.js';
-
-let id = 0;
 
 const ArchiveList = ({varieties}) => {
   return(
     <React.Fragment>
-      <div>
+      <CSSTransitionGroup
+        transitionName="push"
+        transitionEnterTimeout={1000}
+        transitionLeaveTimeout={700}
+        transitionAppear={true}
+        transitionAppearTimeout={1000}>
         {
           (() => {
             for (const [key, value] of varieties.entries()) { //map遍历元素
@@ -16,12 +20,13 @@ const ArchiveList = ({varieties}) => {
                 <ArchiveItems 
                   name={key}
                   list={value}
+                  key={key}
                 />
               );
             }
           })()
         }
-      </div>
+      </CSSTransitionGroup>
     </React.Fragment>
   );
 }

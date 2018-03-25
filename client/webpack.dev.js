@@ -13,7 +13,7 @@ module.exports = merge(common, {
     contentBase: './assets/dist',
     hot: true,
     inline: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
