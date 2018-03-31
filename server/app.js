@@ -32,6 +32,6 @@ app
     .use(router.routes())
     .use(router.allowedMethods());
 
-app.listen(80, '45.32.203.201', () => {
+app.listen(27017, '45.32.203.201', () => {
   console.log('服务器运行在45.32.203.201:80上');
 });
