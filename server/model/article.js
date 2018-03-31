@@ -4,9 +4,10 @@
  * 定义article表模式
  * @type {mongoose}
  */
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+let id = 1;
 const ArticleSchema = new Schema({
   id: {
     unique: true,
@@ -20,10 +21,21 @@ const ArticleSchema = new Schema({
     type: String,
     defalut: "默认分类"
   },
+  abstract: {
+    type: String,
+    defalut: "这里是空的.."
+  },
   page: {
     type: String,
     defalut: "这里空空如也啊喵..."
   },
+  comments: [
+    {
+      body: String,
+      modifyAt: Date,
+      userId: Number
+    }
+  ],
   meta: {
     createAt: {
       type: Date,
@@ -41,12 +53,17 @@ const ArticleSchema = new Schema({
 });
 
 ArticleSchema.pre('save', (next) => {
+  console.log("inter");
   if (this.isNew) {
+    console.log("111");
     this.meta.createAt = this.meta.updateAt = Date.now();
     this.meta.readTimes = 0;
+    this.id = id++;
   }
   else {
-    this.meta.updateAt = Date.now()
+    console.log("222");
+    this.meta.updateAt = Date.now();
+    this.meta.readTimes = this.meta.readTimes + 1;
   }
   next();
 });
@@ -56,6 +73,6 @@ ArticleSchema.pre('save', (next) => {
  * @type {[type]}
  */
 // 参数Article 数据库中的集合名称, 不存在会创建.
-const Article = mongoose.model('Article', ArtilceSchema)
+const Article = mongoose.model('Article', ArticleSchema)
 
 module.exports = Article;
