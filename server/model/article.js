@@ -47,14 +47,11 @@ const ArticleSchema = new Schema({
 });
 
 ArticleSchema.pre('save', function(next) {
-  console.log("inter");
   if (this.isNew) {
-    console.log("111");
     this.meta.createAt = this.meta.updateAt = Date.now();
     this.meta.readTimes = 0;
   }
   else {
-    console.log("222");
     this.meta.updateAt = Date.now();
     this.meta.readTimes = this.meta.readTimes + 1;
   }
