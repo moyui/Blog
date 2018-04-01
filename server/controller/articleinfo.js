@@ -23,16 +23,20 @@ exports.getArticeInfo = async(ctx, next) => {
     ctx.body = JSON.stringify({status: 'failure'});//查询失败
     return next;
   }
-  const infoProcess = Object.keys(articleItems)//除去commets,page项并转换为数组
-                        .filter((item) => {
-                          return (item !== 'abstract')
-                        })
-                        .map((item) => {
-                          return articleItems[item]
-                        });
+
+  console.log(articleInfo);
+
+  const returnData = {
+    id: articleInfo._id,
+    title: articleInfo.title,
+    archive: articleInfo.archive,
+    page: articleInfo.page,
+    commets: articleInfo.commets
+  };
+
   ctx.body =  JSON.stringify({ //查询成功并返回数据
     status: 'success',
-    data: infoProcess
+    data: returnData
   });
   return next;
 }
@@ -50,7 +54,7 @@ exports.createNew = async(ctx, next) => {
   const archive = body.archive;
   const page = body.page;
 
-  let articeinfo = new Article({
+  let articleInfo = new Article({
     title: title,
     archive: archive,
     abstract: abstract,
@@ -58,9 +62,9 @@ exports.createNew = async(ctx, next) => {
   });
 
   try {
-    await articeinfo.save();
+    await articleInfo.save();
   } catch(err) {
-    console.log("保存错误", err);
+    console.log("创建错误", err);
     return next;
   }
 }

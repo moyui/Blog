@@ -1,18 +1,12 @@
 'use strict'
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 /**
  * 定义article表模式
  * @type {mongoose}
  */
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-let id = 1;
 const ArticleSchema = new Schema({
-  id: {
-    unique: true,
-    type: Number
-  },
   title: {
     type: String,
     defalut: "默认标题"
@@ -52,13 +46,12 @@ const ArticleSchema = new Schema({
   }
 });
 
-ArticleSchema.pre('save', (next) => {
+ArticleSchema.pre('save', function(next) {
   console.log("inter");
   if (this.isNew) {
     console.log("111");
     this.meta.createAt = this.meta.updateAt = Date.now();
     this.meta.readTimes = 0;
-    this.id = id++;
   }
   else {
     console.log("222");
@@ -73,6 +66,6 @@ ArticleSchema.pre('save', (next) => {
  * @type {[type]}
  */
 // 参数Article 数据库中的集合名称, 不存在会创建.
-const Article = mongoose.model('Article', ArticleSchema)
+const Article = mongoose.model('Article', ArticleSchema);
 
 module.exports = Article;
