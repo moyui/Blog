@@ -24,7 +24,6 @@ const Blog = () => {
             <Route exact path="/" component={ArticleItems} />
             <Route path="/home" component={ArticleItems} />
             <Route path="/articleinfo/:id" component={ArticleInfo} />
-            <Route path="/articleinfo" component={ArticleInfo} />
             <Route path="/archive" component={Archive} />
             <Route path="*" component={NotFound} />
           </Switch>

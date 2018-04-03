@@ -4,36 +4,50 @@ const mongoose = require('mongoose');
 const Article = mongoose.model('Article');
 
 /**
- * 获取文章详细信息
+ * 通过id获取文章详细信息
  * @param  {[type]}   ctx  [description]
- * @param  {function} next [description]
+ * @param  {Function} next [description]
  * @return {[type]}        [description]
  */
-exports.getArticeInfo = async(ctx, next) => {
-  const id = parseInt(ctx.params.id);
+exports.getArticeInfoById = async(ctx, next) => {
+  const id = ctx.params.id;
+  let articleInfoById, //查询到当前，上一条与下一条文章
+      prevArticleInfo,
+      nextArticleInfo; 
   try {
-    if (!Number.isSafeInteger(id)) {
-      throw new Error('数据错误');
+    if (!id) {
+      throw new Error('文章编号错误');
     }
 
-    const articleInfo = await Article.where({id: id}).findOne().lean();//进行数据库查询
-
+    [articleInfoById, prevArticleInfo, nextArticleInfo] = //进行数据库查询
+      await Promise.all([
+        Article.findById(id),
+        Article.findOne({'_id': {'$lt': id}}),
+        Article.findOne({'_id': {'$gt': id}})
+      ]);
   } catch(err) {
     console.log(err);
+
+    ctx.status = 404;
+    ctx.set('Content-Type', 'application/json');
     ctx.body = JSON.stringify({status: 'failure'});//查询失败
     return next;
   }
 
-  console.log(articleInfo);
-
-  const returnData = {
-    id: articleInfo._id,
-    title: articleInfo.title,
-    archive: articleInfo.archive,
-    page: articleInfo.page,
-    commets: articleInfo.commets
+  const returnData = { //返回值集合
+    id: articleInfoById._id,
+    title: articleInfoById.title,
+    archive: articleInfoById.archive,
+    page: articleInfoById.page,
+    commets: articleInfoById.commets,
+    previousPageId: (prevArticleInfo) ? prevArticleInfo._id : null,
+    previousPageTitle: (prevArticleInfo) ? prevArticleInfo.title: null,
+    nextPageId: (nextArticleInfo) ? nextArticleInfo._id : null,
+    nextPageTitle: (nextArticleInfo) ? nextArticleInfo.title: null,
   };
 
+  ctx.status = 200;
+  ctx.set('Content-Type', 'application/json');
   ctx.body =  JSON.stringify({ //查询成功并返回数据
     status: 'success',
     data: returnData

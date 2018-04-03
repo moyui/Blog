@@ -19,7 +19,7 @@ const ArticleItems = ({id, title, archive, date, readTimes, abstract}) => {
         </li>
         <li className="article-item-date">
           <FontAwesomeIcon icon={faCalendarAlt} />
-          {`日期：${date}`}
+          {`创建日期：${date}`}
         </li>
         <li className="article-item-archive">
           <FontAwesomeIcon icon={faFolderOpen} />

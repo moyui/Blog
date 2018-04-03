@@ -46,7 +46,6 @@ class NavBar extends React.Component {
             <nav className="nav-bar">
               <ul className="nav-ul">
                 <li><Link to="/home">首页</Link></li>
-                <li><Link to="/articleinfo">文章</Link></li>
                 <li><Link to="/archive">归档</Link></li>
               </ul>
             </nav>

@@ -9,7 +9,7 @@ module.exports = function() {
   const router = new Router();
 
   router.get('/articleitems', ArticleItems.getArticleItems);
-  router.get('/articleinfo', ArticleInfo.getArticeInfo);
+  router.get('/articleinfo/:id', ArticleInfo.getArticeInfoById);
   router.post('/articleinfo', ArticleInfo.createNew);
   
   return router;

@@ -42,7 +42,7 @@ class ArticleInfo extends React.Component {
   }
 
   componentDidMount() {
-    const articleMatchId = this.props.match.params.id ? this.props.match.params.id : 'all';//在articleList中利用:id匹配到的文章id
+    const articleMatchId = this.props.match.params.id;//在articleList中利用:id匹配到的文章id
     this.fetchAInfo(articleMatchId);
   }
 
@@ -67,13 +67,13 @@ class ArticleInfo extends React.Component {
                   <br />
                   <nav className="article-info-btn">
                     <button>
-                      <Link to={`${articleInfo.previousPage}`}>
-                        <FontAwesomeIcon icon={faAngleLeft} />{'上一篇'}
+                      <Link to={`${articleInfo.previousPageId}`}>
+                        <FontAwesomeIcon icon={faAngleLeft} />{`上一篇：${articleInfo.previousPageTitle}`}
                       </Link>
                     </button>
                     <button>
-                      <Link to={`${articleInfo.nextPage}`}>
-                        {'下一篇'}<FontAwesomeIcon icon={faAngleRight} />
+                      <Link to={`${articleInfo.nextPageId}`}>
+                        {`下一篇：${articleInfo.nextPageTitle}`}<FontAwesomeIcon icon={faAngleRight} />
                       </Link>
                     </button>
                   </nav>
