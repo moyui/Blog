@@ -22,7 +22,7 @@ export const fetchAItemsFailure = (error) => {
 
 export const fetchAItems = (num) => {
   return async (dispatch) => {
-    const apiUrl = `http://45.32.203.201:443/articleitems?limit=${num}`;
+    const apiUrl = `https://www.moyui.site/articleitems?limit=${num}&page=1`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');

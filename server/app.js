@@ -1,7 +1,7 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const db = 'mongodb://localhost:27017/test1';
+const db = 'mongodb://localhost:27017/blog';
 mongoose.Promise = require('bluebird');
 /**
  * mongoose连接数据库
@@ -13,7 +13,7 @@ mongoose.connect(db);
  * 获取数据库表对应的js对象所在的路径
  * @type {[type]}
  */
-require('./model/article.js');
+require('./model/model.js');
 
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');

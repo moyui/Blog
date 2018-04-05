@@ -19,7 +19,7 @@ class ArticleInfo extends React.Component {
   }
 
   async fetchAInfo(id) {
-    const apiUrl = `http://45.32.203.201:443/articleinfo/${id}`;
+    const apiUrl = `https://www.moyui.site/articleinfo/${id}`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
