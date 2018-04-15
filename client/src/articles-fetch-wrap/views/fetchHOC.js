@@ -26,7 +26,7 @@ const fetchHOC = (WrappedComponent) => {
       headers.append('Content-Type', 'application/json');
       const init = {
         method: 'post',
-        header: headers,
+        headers: headers,
         mode: 'cors',
         body: JSON.stringify({
           id: id

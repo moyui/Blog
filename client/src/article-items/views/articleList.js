@@ -15,7 +15,7 @@ const ArticleList = (props) => {
         transitionAppear={true}
         transitionAppearTimeout={1000}>
       {
-        articleData.map((item) => {
+        articleData.reverse().map((item) => {
           return ( <ArticleItems key={item.id} id={item.id} clickCount={clickCount} {...item}/>);
         })
       }

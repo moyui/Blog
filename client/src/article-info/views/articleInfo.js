@@ -63,7 +63,7 @@ class ArticleInfo extends React.Component {
                 <React.Fragment>
                   <h3 className="article-info-title">{articleInfo.title}</h3>
                   <br />
-                  <article className="article-info-main">{articleInfo.page}</article>
+                  <article className="article-info-main" dangerouslySetInnerHTML={{__html:articleInfo.page}}></article>
                   <br />
                   <nav className="article-info-btn">
                     <button>

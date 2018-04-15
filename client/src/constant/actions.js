@@ -20,9 +20,9 @@ export const fetchAItemsFailure = (error) => {
   }
 }
 
-export const fetchAItems = (num) => {
+export const fetchAItems = (limit, num = 1) => {
   return async (dispatch) => {
-    const apiUrl = `/api/articleitems?limit=15&page=${num}`;
+    const apiUrl = `/api/articleitems?limit=${limit}&page=${num}`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
