@@ -81,4 +81,31 @@ exports.createNew = async(ctx, next) => {
     console.log("创建错误", err);
     return next;
   }
+
+  ctx.status = 200;
+  ctx.set('Content-Type', 'application/json');
+  ctx.body =  JSON.stringify({ //增加成功
+    status: 'success'
+  });
+}
+
+/**
+ * 增加阅读次数
+ * @param  {[type]}   ctx  [description]
+ * @param  {function} next [description]
+ * @return {[type]}        [description]
+ */
+exports.plusReadTimes = async(ctx, next) => {
+  const body = ctx.request.body;
+  const id = body.id
+  try {
+    await Article.update({ '_id': id}, {'$inc': {'meta.readTimes': 1}})
+  } catch (err) {
+    console.log("更新错误", err);
+  }
+  ctx.status = 200;
+  ctx.set('Content-Type', 'application/json');
+  ctx.body =  JSON.stringify({ //增加成功
+    status: 'success'
+  });
 }

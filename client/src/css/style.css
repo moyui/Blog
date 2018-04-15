@@ -123,7 +123,7 @@ input, textarea, select, button {
 
 .slide-enter.slide-enter-active {
   top: 0;
-  transition: top 500ms ease-in
+  transition: top 300ms ease-in
 }
 
 .slide-leave {

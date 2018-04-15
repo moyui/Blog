@@ -10,6 +10,7 @@ module.exports = function() {
 
   router.get('/articleitems', ArticleItems.getArticleItems);
   router.get('/articleinfo/:id', ArticleInfo.getArticeInfoById);
+  router.post('/readtimes' , ArticleInfo.plusReadTimes);
   router.post('/articleinfo', ArticleInfo.createNew);
   
   return router;

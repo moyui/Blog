@@ -53,7 +53,6 @@ ArticleSchema.pre('save', function(next) {
   }
   else {
     this.meta.updateAt = Date.now();
-    this.meta.readTimes = this.meta.readTimes + 1;
   }
   next();
 });

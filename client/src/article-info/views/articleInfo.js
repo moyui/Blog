@@ -18,8 +18,8 @@ class ArticleInfo extends React.Component {
     }
   }
 
-  async fetchAInfo(id) {
-    const apiUrl = `https://www.moyui.site/articleinfo/${id}`;
+  async fetchAInfo(id, event) {
+    const apiUrl = `/api/articleinfo/${id}`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
@@ -63,7 +63,7 @@ class ArticleInfo extends React.Component {
                 <React.Fragment>
                   <h3 className="article-info-title">{articleInfo.title}</h3>
                   <br />
-                  <p className="article-info-main">{articleInfo.page}</p>
+                  <article className="article-info-main">{articleInfo.page}</article>
                   <br />
                   <nav className="article-info-btn">
                     <button>
@@ -80,7 +80,7 @@ class ArticleInfo extends React.Component {
                 </React.Fragment>
               )};
             case Status.FAILURE: {return (<div>{'加载失败啊喵!'}</div>)};
-              default: {throw new Error(`未知状态${this.status}`)};
+            default: {throw new Error(`未知状态${this.status}`)};
             }
           })()
         }</div>

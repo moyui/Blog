@@ -47,7 +47,7 @@ exports.getArticleItems = async(ctx, next) => {
 
   ctx.status = 200;
   ctx.set('Content-Type', 'application/json');
-  ctx.body =  JSON.stringify({ //查询成功并返回数据
+  ctx.body = JSON.stringify({ //查询成功并返回数据
     status: 'success',
     data: returnData
   });

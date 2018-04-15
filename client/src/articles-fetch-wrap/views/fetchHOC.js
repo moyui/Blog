@@ -10,11 +10,33 @@ const fetchHOC = (WrappedComponent) => {
   return class HOCComponent extends React.Component {
     constructor() {
       super (...arguments);
+
+      this.onClickCount = this.onClickCount.bind(this);
     }
 
     componentDidMount() {
       const articleNum = this.props.articleNum;
       this.props.fetchArticleItems(articleNum.count);
+    }
+
+    async onClickCount(event, id) {
+      const apiUrl = `/api/readtimes`;
+      const headers = new Headers();
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
+      const init = {
+        method: 'post',
+        header: headers,
+        mode: 'cors',
+        body: JSON.stringify({
+          id: id
+        })
+      };
+      try {
+        await fetch(apiUrl, init);
+      } catch(error) {
+        console.error(`发送失败啊喵！:${error}`);
+      }
     }
 
     render() {
@@ -43,6 +65,7 @@ const fetchHOC = (WrappedComponent) => {
                   return (<WrappedComponent 
                             articleData={data} 
                             varieties={varieties} 
+                            clickCount={this.onClickCount}
                           />);
                 case Status.FAILURE: {
                   return (                

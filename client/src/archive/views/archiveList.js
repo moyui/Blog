@@ -4,7 +4,8 @@ import { CSSTransitionGroup } from 'react-transition-group';
 
 import { ArchiveItems } from './archiveItems.js';
 
-const ArchiveList = ({varieties}) => {
+const ArchiveList = (props) => {
+  const { varieties, clickCount } = props;
   return(
     <React.Fragment>
       <CSSTransitionGroup

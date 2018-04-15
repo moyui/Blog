@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faEye, faFolderOpen, faAngleRight } from '@fortawesome/fontawesome-free-solid';
 
-const ArticleItems = ({id, title, archive, date, readTimes, abstract}) => {
+const ArticleItems = (props) => {
+  const { id, title, archive, date, readTimes, abstract, clickCount } = props;
+
   return (
     <div className="article-item">
-      <h3 className="article-item-title">
+      <h3 className="article-item-title"  onClick={clickCount.bind(this, event, id)}>
         <Link to={`/articleinfo/${id}`}>
           {title}
         </Link>
@@ -29,7 +31,7 @@ const ArticleItems = ({id, title, archive, date, readTimes, abstract}) => {
       <br />
       <p className="article-item-abstract">{abstract}</p>
       <br />
-      <button className="article-item-all">
+      <button className="article-item-all" onClick={clickCount.bind(this, event, id)}>
         <Link to={`/articleinfo/${id}`}>
           {'阅读全文'}
           <FontAwesomeIcon icon={faAngleRight} />
@@ -43,7 +45,7 @@ ArticleItems.propTypes = {
   title: PropTypes.string,
   archive: PropTypes.string,
   date: PropTypes.string,
-  readTimes: PropTypes.string,
+  readTimes: PropTypes.number,
   abstract: PropTypes.string,
 }
 

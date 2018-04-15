@@ -22,7 +22,7 @@ export const fetchAItemsFailure = (error) => {
 
 export const fetchAItems = (num) => {
   return async (dispatch) => {
-    const apiUrl = `https://www.moyui.site/articleitems?limit=${num}&page=1`;
+    const apiUrl = `/api/articleitems?limit=15&page=${num}`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
@@ -40,7 +40,6 @@ export const fetchAItems = (num) => {
         throw new Error(`获取数据失败，错误代码:${response.status}`);
       }
       const responseJson = await response.json();
-      
       dispatch(fetchAItemsSuccess(responseJson.data));
 
     } catch(error) {

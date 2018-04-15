@@ -38,8 +38,8 @@ class NavBar extends React.Component {
     return (
       <CSSTransitionGroup 
         transitionName="slide"
-        transitionEnterTimeout={500}
-        transitionLeaveTimeout={300}>
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={200}>
         {
           (this.state.switchHide) ? null : 
           (
