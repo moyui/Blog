@@ -12,9 +12,15 @@ html {
   font-size: 100%;
 }
 
-*,*:after,*:before {
- -webkit-box-sizing: content-box;
- box-sizing: content-box;
+/*自适应*/
+input, textarea, img, video, object {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
+/*firefox设置*/
+img {  
+  display: inline-block;
 }
 
 body {
@@ -50,7 +56,7 @@ a {
 
 .clearfix:before,
 .clearfix:after {
-  content: "\200b";
+  content: "";
   display: block;
   height: 0;
   clear: both;
@@ -59,55 +65,70 @@ a {
 
 /*以下是桌面端部分*/
 @media (min-width: 720px) and (max-width: 1280px) {
-  body {
-    font-size: 0.875em;
+  div, p, article {
+    font-size: 14px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  span, button, li {
+    font-size: 12px;
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1920px) {
-  body {
-    font-size: 1em;
+  div, p, article {
+    font-size: 16px;
+  }
+  h3 {
+    font-size: 28px;
+  }
+  span, button, li {
+    font-size: 14px;
+  }
+  .side-bar {
+    
   }
 }
 
 @media (min-width: 1920px) {
-  body {
-    font-size: 1.125em;
+  div, p, article {
+    font-size: 20px;
   }
-}
-
-body {
-  position: relative;
-}
-
-input, textarea, select, button {
-  font-size: 1em;
+  h3 {
+    font-size: 32px;
+  }
+  span, button, li {
+    font-size: 16px;
+  }
 }
 
 /*导航栏开始*/
 .nav-bar {
-  width: 100%;
-  display: block;
   position: fixed;
+  width: 100%;
   top: 0;
-  font-size: 1em;
   background-color: black;
   opacity: 0.5;
-  padding-left: 7.5vw;
 }
 
 .nav-ul {
+  padding-left: 5%;
   display: flex;
   justify-content: flex-start;
 }
 
+.nav-ul li {
+  height: 38px;
+  line-height: 38px;
+}
+
 .nav-ul a {
   display: inline-block;
+  padding: 0 12px;
+  line-height: inherit;
   color: white;
-  width: 5em;
   text-align: center;
-  line-height: 3.125em;
-  height: 3.125em;
   transition: all 700ms;
 }
 
@@ -118,7 +139,7 @@ input, textarea, select, button {
 }
 
 .slide-enter {
-  top: -3.125em;
+  top: -38px;
 }
 
 .slide-enter.slide-enter-active {
@@ -131,31 +152,27 @@ input, textarea, select, button {
 }
 
 .slide-leave.slide-leave-active {
-  top: -3.125em;
+  top: -38px;
   transition: top 200ms ease-in
 }
 
 /*头图*/
-.brand {
-  background-image: url("../image/brand.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+
+.brand-img {
+  display: block; /*消除白边*/
+  width: 100%;
 }
 
 /*主题部分开始*/
 .body {
   display: flex;
   background-color: #EFEFEF;
-  padding: 3.125em 7.5vw 0 7.5vw;
+  padding: 5% 5%;
 }
 
 /*侧栏开始*/
 .side-bar {
   flex: 1;
-  height: 100%;
-  min-width: 9.375em;
-  max-width: 30em;
   display: flex;
   flex-direction: column;
   align-items: center;

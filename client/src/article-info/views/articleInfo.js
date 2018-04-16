@@ -19,7 +19,7 @@ class ArticleInfo extends React.Component {
   }
 
   async fetchAInfo(id, event) {
-    const apiUrl = `/api/articleinfo/${id}`;
+    const apiUrl = `/v1/article/${id}`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');

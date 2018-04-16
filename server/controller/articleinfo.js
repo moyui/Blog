@@ -61,7 +61,7 @@ exports.getArticeInfoById = async(ctx, next) => {
  * @param  {function} next [description]
  * @return {[type]}        [description]
  */
-exports.createNew = async(ctx, next) => {
+exports.postCreateNewArticle = async(ctx, next) => {
   const body = ctx.request.body;
   const title = body.title;
   const abstract = body.abstract;
@@ -79,10 +79,15 @@ exports.createNew = async(ctx, next) => {
     await articleInfo.save();
   } catch(err) {
     console.log("创建错误", err);
+    ctx.status = 400;
+    ctx.set('Content-Type', 'application/json');
+    ctx.body = JSON.stringify({
+      status: 'failure'
+    });
     return next;
   }
 
-  ctx.status = 200;
+  ctx.status = 201;
   ctx.set('Content-Type', 'application/json');
   ctx.body =  JSON.stringify({ //增加成功
     status: 'success'
@@ -95,15 +100,20 @@ exports.createNew = async(ctx, next) => {
  * @param  {function} next [description]
  * @return {[type]}        [description]
  */
-exports.plusReadTimes = async(ctx, next) => {
-  const body = ctx.request.body;
-  const id = body.id
+exports.postArticleReadTimesById = async(ctx, next) => {
+  const id = ctx.params.id;
   try {
     await Article.update({ '_id': id}, {'$inc': {'meta.readTimes': 1}})
   } catch (err) {
+    ctx.status = 400;
+    ctx.set('Content-Type', 'application/json');
+    ctx.body = JSON.stringify({
+      status: 'error'
+    });
     console.log("更新错误", err);
+    return next
   }
-  ctx.status = 200;
+  ctx.status = 201;
   ctx.set('Content-Type', 'application/json');
   ctx.body =  JSON.stringify({ //增加成功
     status: 'success'

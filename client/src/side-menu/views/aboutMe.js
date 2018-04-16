@@ -8,7 +8,7 @@ const AboutMe = () => {
   return (
     <React.Fragment>
       <img className="my-header-img" src={header} />
-      <h2>moyui末御</h2>
+      <h3>moyui末御</h3>
       <p>平凡的前端学习者</p>
       <ul className="my-link">
         <li><a href="https://github.com/moyui"><FontAwesomeIcon icon={faGithub} className="fa-2x my-icon"/></a></li>

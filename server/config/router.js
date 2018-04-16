@@ -8,10 +8,10 @@ const ArticleInfo = require('../controller/articleinfo.js');
 module.exports = function() {
   const router = new Router();
 
-  router.get('/articleitems', ArticleItems.getArticleItems);
-  router.get('/articleinfo/:id', ArticleInfo.getArticeInfoById);
-  router.post('/readtimes' , ArticleInfo.plusReadTimes);
-  router.post('/articleinfo', ArticleInfo.createNew);
+  router.get('/v1/articleitems', ArticleItems.getArticleItems);
+  router.get('/v1/article/:id', ArticleInfo.getArticeInfoById);
+  router.post('/v1/article/:id/readtimes' , ArticleInfo.postArticleReadTimesById);
+  router.post('/v1/article', ArticleInfo.postCreateNewArticle);
   
   return router;
 }

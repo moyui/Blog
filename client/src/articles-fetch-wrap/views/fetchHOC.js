@@ -20,7 +20,7 @@ const fetchHOC = (WrappedComponent) => {
     }
 
     async onClickCount(event, id) {
-      const apiUrl = `/api/readtimes`;
+      const apiUrl = `/v1/article/${id}/readtimes`;
       const headers = new Headers();
       headers.append('Accept', 'application/json');
       headers.append('Content-Type', 'application/json');
@@ -28,9 +28,6 @@ const fetchHOC = (WrappedComponent) => {
         method: 'post',
         headers: headers,
         mode: 'cors',
-        body: JSON.stringify({
-          id: id
-        })
       };
       try {
         await fetch(apiUrl, init);

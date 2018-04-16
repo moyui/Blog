@@ -16,7 +16,9 @@ const Blog = () => {
   return (
     <React.Fragment>
       <NavBar key={`${classPerfix}-navbar`}/>
-      <div key={`${classPerfix}-brand`} className="brand"></div>
+      <div key={`${classPerfix}-brand`} className="brand">
+        <img className="brand-img" src={require('./image/brand.jpg')} />
+      </div>
       <div key={`${classPerfix}-body`} className="body">
         <SideMenu />
         <div className="main-body">

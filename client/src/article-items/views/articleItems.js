@@ -14,23 +14,21 @@ const ArticleItems = (props) => {
           {title}
         </Link>
       </h3>
-      <ul className="article-item-ul">
-        <li className="article-item-readtimes">
+      <div>
+        <span className="article-item-readtimes">
           <FontAwesomeIcon icon={faEye} />
           {`阅读次数：${readTimes}`}
-        </li>
-        <li className="article-item-date">
+        </span>
+        <span className="article-item-date">
           <FontAwesomeIcon icon={faCalendarAlt} />
           {`创建日期：${date}`}
-        </li>
-        <li className="article-item-archive">
+        </span>
+        <span className="article-item-archive">
           <FontAwesomeIcon icon={faFolderOpen} />
           {`归档于：${archive}`}
-        </li>
-      </ul>
-      <br />
+        </span>
+      </div>
       <p className="article-item-abstract">{abstract}</p>
-      <br />
       <button className="article-item-all" onClick={clickCount.bind(this, event, id)}>
         <Link to={`/articleinfo/${id}`}>
           {'阅读全文'}
