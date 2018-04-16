@@ -3,7 +3,7 @@ import { AboutMe } from './aboutMe.js';
 
 export default () => {
   return (
-    <div className="side-bar">
+    <div className="side-bar-content">
       <AboutMe />
     </div>
   );

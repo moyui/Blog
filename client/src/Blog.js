@@ -20,7 +20,9 @@ const Blog = () => {
         <img className="brand-img" src={require('./image/brand.jpg')} />
       </div>
       <div key={`${classPerfix}-body`} className="body">
-        <SideMenu />
+        <aside className="side-bar">
+          <SideMenu />
+        </aside>
         <div className="main-body">
           <Switch>
             <Route exact path="/" component={ArticleItems} />

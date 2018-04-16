@@ -8,10 +8,6 @@ input, textarea, select, button {
   font-size: 0;
 }
 
-html {
-  font-size: 100%;
-}
-
 /*自适应*/
 input, textarea, img, video, object {
   box-sizing: border-box;
@@ -35,6 +31,10 @@ img {
   border: none;
 }
 
+h3 {
+  font-weight: normal;
+}
+
 input, select, textarea, button {
   background: none;
   /*解决输入框兼容问题*/
@@ -52,6 +52,7 @@ textarea {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 .clearfix:before,
@@ -85,9 +86,6 @@ a {
   }
   span, button, li {
     font-size: 14px;
-  }
-  .side-bar {
-    
   }
 }
 
@@ -157,7 +155,6 @@ a {
 }
 
 /*头图*/
-
 .brand-img {
   display: block; /*消除白边*/
   width: 100%;
@@ -173,19 +170,19 @@ a {
 /*侧栏开始*/
 .side-bar {
   flex: 1;
+  padding: 20px;
+  background-color: white;
+}
+
+.side-bar-content {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   border-radius: 0.5em;
   position: sticky;
-  top: 4em;
   background-color: white;
-  padding: 1vh 0;
-  margin-right: 1vw;
-}
-
-.side-bar > * {
-  padding: 1vh 0;
 }
 
 .my-header-img {
@@ -219,7 +216,7 @@ a {
 
 /*正文部分*/
 .main-body {
-  flex: 2;
+  flex: 2.5;
   margin-left: 1vw;
 }
 
