@@ -10,6 +10,8 @@ import { view as ArticleInfo } from './article-info/';
 import { view as NotFound } from './not-found/';
 import { view as Archive } from './archive/';
 
+import brand from './image/brand.jpg';
+
 const Blog = () => {
   const classPerfix = 'root';
 
@@ -17,7 +19,7 @@ const Blog = () => {
     <React.Fragment>
       <NavBar key={`${classPerfix}-navbar`}/>
       <div key={`${classPerfix}-brand`} className="brand">
-        <img className="brand-img" src={require('./image/brand.jpg')} />
+        <img className="brand-img" src={brand} />
       </div>
       <div key={`${classPerfix}-body`} className="body">
         <aside className="side-bar">
@@ -33,6 +35,8 @@ const Blog = () => {
           </Switch>
         </div>
       </div>
+      <footer>
+      </footer>
     </React.Fragment>
   );
 };
