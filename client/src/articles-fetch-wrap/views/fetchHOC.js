@@ -19,7 +19,8 @@ const fetchHOC = (WrappedComponent) => {
       this.props.fetchArticleItems(articleNum.count);
     }
 
-    async onClickCount(event, id) {
+    async onClickCount(id) {
+      
       const apiUrl = `/v1/article/${id}/readtimes`;
       const headers = new Headers();
       headers.append('Accept', 'application/json');

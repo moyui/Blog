@@ -22,7 +22,7 @@ export const fetchAItemsFailure = (error) => {
 
 export const fetchAItems = (limit, num = 1) => {
   return async (dispatch) => {
-    const apiUrl = `http://result.eolinker.com/Zm7qf6y349dba0f1958472d8fb0a7b1c52857e833ca5343?uri=/v1/articleitems`;///v1/articleitems?limit=${limit}&page=${num}
+    const apiUrl = `/v1/articleitems?limit=${limit}&page=${num}`;
     const headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');

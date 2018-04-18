@@ -7,21 +7,23 @@ import fabook from '@fortawesome/fontawesome-free-solid/faBook';
 import header from '../../image/header.jpg'
 
 const AboutMe = () => {
+  const classPerfix = 'side-bar';
+
   return (
     <React.Fragment>
-      <img className="my-header-img" src={header} />
-      <h3>{'moyui末御'}</h3>
-      <p>{'平凡的前端学习者'}</p>
-      <ul className="my-link">
-        <li><a href="https://github.com/moyui"><FontAwesomeIcon icon={faGithub} className="fa-2x my-icon"/></a></li>
-        <li><a href="https://weibo.com/u/5685710194?refer_flag=1001030201_"><FontAwesomeIcon icon={faWeibo} className="fa-2x my-icon"/></a></li>
-        <li><a href="https://www.zhihu.com/people/gao-xi-yu-44/activities"><FontAwesomeIcon icon={fabook} className="fa-2x my-icon"/></a></li>
+      <img className={`${classPerfix} ${classPerfix}-img`} src={header}/>
+      <h3 className={`${classPerfix}`}>{'moyui末御'}</h3>
+      <p className={`${classPerfix}`}>{'平凡的前端学习者'}</p>
+      <ul className={`${classPerfix} ${classPerfix}-link`}>
+        <li><a href="https://github.com/moyui"><FontAwesomeIcon icon={faGithub} className={`fa-2x ${classPerfix}-icon`}/></a></li>
+        <li><a href="https://weibo.com/u/5685710194?refer_flag=1001030201_"><FontAwesomeIcon icon={faWeibo} className={`fa-2x ${classPerfix}-icon`}/></a></li>
+        <li><a href="https://www.zhihu.com/people/gao-xi-yu-44/activities"><FontAwesomeIcon icon={fabook} className={`fa-2x ${classPerfix}-icon`}/></a></li>
       </ul>
-      <div>
-        <Link to={'/archive'}>
+      <div className={`${classPerfix}`}>
+        <Link to={'/archive'} className={`${classPerfix}`}>
           <span>{'文章总数：'}</span><span></span>
         </Link>
-        <Link to={'/'}>
+        <Link to={'/'} className={`${classPerfix}`}>
           <span>{'分类：'}</span><span></span>
         </Link>
       </div>

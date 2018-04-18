@@ -31,7 +31,7 @@ img {
   border: none;
 }
 
-h3 {
+h3, h4, h5 {
   font-weight: normal;
 }
 
@@ -72,7 +72,13 @@ a {
   h3 {
     font-size: 22px;
   }
-  span, button, li {
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  span, button, li, pre {
     font-size: 12px;
   }
 }
@@ -84,7 +90,13 @@ a {
   h3 {
     font-size: 28px;
   }
-  span, button, li {
+  h4 {
+    font-size: 25px;
+  }
+  h5 {
+    font-size: 22px;
+  }
+  span, button, li, pre {
     font-size: 14px;
   }
 }
@@ -96,9 +108,24 @@ a {
   h3 {
     font-size: 32px;
   }
-  span, button, li {
+  h4 {
+    font-size: 28px;
+  }
+  h5 {
+    font-size: 22px;
+  }
+  span, button, li, pre {
     font-size: 16px;
   }
+}
+
+p, div, h1, h2, h3, h4, h5 {
+  font-family: "Georgia";
+} 
+
+pre {
+  line-height: 1.5;
+  font-family: "Andale Mono","lucida console","Courier New",monospace;
 }
 
 /*导航栏开始*/
@@ -108,6 +135,7 @@ a {
   top: 0;
   background-color: black;
   opacity: 0.5;
+  z-index: 2;
 }
 
 .nav-ul {
@@ -162,82 +190,124 @@ a {
 
 /*主题部分开始*/
 .body {
-  display: flex;
   background-color: #EFEFEF;
-  padding: 5% 5%;
+  display: flex;
   justify-content: center;
 }
 
+.main-body-wrap,
+.side-bar-wrap {
+  width: 100%;
+  margin: 40px 20px;
+}
+
 /*侧栏开始*/
-.side-bar {
-  flex: 1;
-  padding: 20px;
+.side-bar-wrap {
+  position: relative; /*父元素定位，为了滑动效果*/
+  vertical-align: top;
+  display: inline-block;
+  border-radius: 10px;
+  max-width: 260px;
+}
+
+.fix-fuel {
+  display: block;
   background-color: white;
-  max-width: 385px; /*限制最大宽度*/
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.side-bar-fixed {
+  position: fixed;
+  top: 50px;
 }
 
 .side-bar-content {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border-radius: 0.5em;
-  position: sticky;
-  background-color: white;
 }
 
-.my-header-img {
-  width: 9.375em;
-  height: 9.375em;
+.side-bar {
+  padding: 5px;
+}
+
+.side-bar-img {
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
 }
 
-.my-link {
+.side-bar-link {
   display: flex;
 }
 
-.my-link li {
-  padding: 0 1em;
+.side-bar-link li {
+  padding: 10px;
 }
 
-.my-link a {
+.side-bar-link a {
   display: inline-block;
 }
 
-.my-icon {
+.side-bar-icon {
   color: black;
   transition: all 700ms;
 }
 
-.my-icon:hover,
-.my-icon:active {
+.side-bar-icon:hover,
+.side-bar-icon:active {
   color: skyblue;
   transition: color 500ms
 }
 
 /*正文部分*/
-.main-body {
-  flex: 2.5;
-  margin-left: 1vw;
+.main-body-wrap {
+  display: inline-block;
   max-width: 774px; /*限制最大宽度*/
 }
 
 .article-item {
+  padding: 10px;
+}
+
+.article-item-content {
   background-color: white;
-  border-radius: 0.5em;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1vh 1vw;
+  padding: 40px 40px;
+  margin: 40px 0;
 }
 
-.article-item > * {
-  padding: 1vh 0;
+.article-item-content:first-child {
+  margin-top: 0;
 }
 
-.article-item-title {
-  font-size: 1.75em;
+.article-item-content:last-child {
+  margin-bottom: 0;
+}
+
+
+.article-item-header,
+.article-item-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-item-header {
+  margin-bottom: 40px;
+}
+
+.article-item-body > p {
+  margin-bottom: 20px;
+} 
+
+.article-item-button {
+  margin-top: 40px;
 }
 
 .article-item-title a {
@@ -249,7 +319,7 @@ a {
   position: absolute;
   content: "";
   width: 0;
-  height: 0.1em;
+  height: 2px;
   background: black;
   flex: 1;
   top: 100%;
@@ -264,36 +334,13 @@ a {
   transition: all 500ms;
 }
 
-
-.article-item-all a {
-  font-size: 1em;
-  border-radius: 0.5em;
-  display: inline-block;
-  background-color: white;
-  color: skyblue;
-  width: 6.25em;
-  height: 1.875em;
-  line-height: 1.875em;
-  border: 1px solid skyblue;
-  transition: all 700ms;
-}
-
-.article-item-all a:hover,
-.article-item-all a:active {
-  background-color: gray;
-  color: white;
-  border-color: transparent;
-  transition: all 500ms
-}
-
-.article-item-ul {
+.article-item-meta {
   display: flex;
   width: 100%;
   justify-content: center;
 }
-.article-item-ul li {
-  font-size: 0.875em;
-  padding: 0 1em;
+.article-item-meta span {
+  padding: 10px;
 }
 
 .article-item-readtimes {
@@ -306,6 +353,23 @@ a {
 
 .article-item-abstract {
   color: gray;
+}
+
+.article-item-button {
+  border-radius: 10px;
+  padding: 0 10px;
+  line-height: 2;
+  color: skyblue;
+  border: 1px solid skyblue;
+  transition: all 700ms;
+}
+
+.article-item-button:hover,
+.article-item-button:active {
+  background-color: gray;
+  color: white;
+  border-color: transparent;
+  transition: all 500ms
 }
 
 .push-enter,
@@ -329,30 +393,25 @@ a {
 }
 
 /*文章主题部分*/
-.article-info {
+.article-info-content {
   background-color: white;
-  border-radius: 0.5em;
+  padding: 40px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1vh 1vw;
-}
-
-.article-info-main {
-  color: gray;
 }
 
 .article-info-title {
   position: relative;
   color: black;
-  font-size: 1.75em;
 }
 
 .article-info-title::after {
   position: absolute;
   content: "";
   width: 0;
-  height: 0.1em;
+  height: 2px;
   background: black;
   flex: 1;
   top: 100%;
@@ -367,25 +426,56 @@ a {
   transition: all 500ms;
 }
 
-.article-info-btn button {
-  padding: 0 1em;
+.article-info-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.article-info-btn a {
-  font-size: 1em;
-  border-radius: 0.5em;
-  display: inline-block;
+.article-info-body h4,
+.article-info-body h5 {
+  text-align: center;
+}
+
+.article-info-header {
+  margin-bottom: 40px;
+}
+
+.article-info-body>p,
+.article-info-body>h4,
+.article-info-body>h5 {
+  margin-bottom: 20px;
+}
+
+.article-info-body>p {
+  word-break: break-word;
+}
+
+.article-info-body>pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.article-info-nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.article-info-nav button {
+  border-radius: 10px;
   background-color: white;
   color: skyblue;
-  width: 6.25em;
-  height: 1.875em;
-  line-height: 1.875em;
+  padding: 0 10px;
+  line-height: 2;
   border: 1px solid skyblue;
   transition: all 700ms;
 }
 
-.article-info-btn a:hover,
-.article-info-btn a:active {
+.article-info-nav button:hover,
+.article-info-nav button:active {
   background-color: gray;
   color: white;
   border-color: transparent;
@@ -393,17 +483,20 @@ a {
 }
 
 /*归档部分*/
-.archive-item {
+.archive-item-content {
+  padding: 40px;
+  border-radius: 10px;
   background-color: white;
-  border-radius: 0.5em;
+}
+
+.archive-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1vh 1vw;
 }
 
-.archive-item-title {
-  font-size: 1.75em;
+.archive-item-header {
+  margin-bottom: 40px;
 }
 
 .archive-item-title a {
@@ -430,60 +523,31 @@ a {
   transition: all 500ms;
 }
 
-.archive-item > * {
-  padding: 1vh 0;
-}
-
-.archive-item-ol {
+.archive-item-list {
   display: flex;
   width: 100%;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
-.archive-item-ol li {
-  position: relative;
+.archive-item-list li {
+  margin-bottom: 20px;
   list-style: upper-roman;
   list-style-position: inside;
-  padding: 0 1vw;
   color: gray;
   transition: all 1000ms;
 }
 
-.archive-item-ol li a {
+.archive-item-list a {
   color: gray;
   transition: color 1000ms;
 }
 
-.archive-item-ol li:hover,
-.archive-item-ol li a:hover,
-.archive-item-ol li:active,
-.archive-item-ol li a:active {
+.archive-item-list li:hover,
+.archive-item-list li a:hover,
+.archive-item-list li:active,
+.archive-item-list li a:active {
   color: skyblue;
   transition: color 500ms;
-}
-
-.archive-item-btn button {
-  padding: 0 1em;
-}
-
-.archive-item-btn a {
-  font-size: 1em;
-  border-radius: 0.5em;
-  display: inline-block;
-  background-color: white;
-  color: skyblue;
-  width: 6.25em;
-  height: 1.875em;
-  line-height: 1.875em;
-  border: 1px solid skyblue;
-  transition: all 700ms;
-}
-
-.archive-item-btn a:hover,
-.archive-item-btn a:active {
-  background-color: gray;
-  color: white;
-  border-color: transparent;
-  transition: all 500ms
 }

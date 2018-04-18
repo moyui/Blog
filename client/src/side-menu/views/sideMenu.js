@@ -6,5 +6,6 @@ export default () => {
     <div className="side-bar-content">
       <AboutMe />
     </div>
-  );
-};
+  )
+}
+

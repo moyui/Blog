@@ -47,6 +47,8 @@ class ArticleInfo extends React.Component {
   }
 
   render() {
+    const classPrefix = 'article-info';
+
     const {status, articleInfo} = this.state;
     return (
       <CSSTransitionGroup         
@@ -55,28 +57,28 @@ class ArticleInfo extends React.Component {
         transitionLeaveTimeout={700}
         transitionAppear={true}
         transitionAppearTimeout={1000}>
-        <div className="article-info"> {
+        <div className={`${classPrefix}-content`}> {
           (() => {
             switch(status) {
               case Status.LOADING: {return (<div>{'加载进行中啊喵~'}</div>)};
               case Status.SUCCESS: {return (
                 <React.Fragment>
-                  <h3 className="article-info-title">{articleInfo.title}</h3>
-                  <br />
-                  <article className="article-info-main" dangerouslySetInnerHTML={{__html:articleInfo.page}}></article>
-                  <br />
-                  <nav className="article-info-btn">
-                    <button>
-                      <Link to={`${articleInfo.previousPageId}`}>
-                        <FontAwesomeIcon icon={faAngleLeft} />{`上一篇：${articleInfo.previousPageTitle}`}
-                      </Link>
-                    </button>
-                    <button>
-                      <Link to={`${articleInfo.nextPageId}`}>
-                        {`下一篇：${articleInfo.nextPageTitle}`}<FontAwesomeIcon icon={faAngleRight} />
-                      </Link>
-                    </button>
-                  </nav>
+                  <div className={`${classPrefix} ${classPrefix}-header`}>
+                    <h3 className={`${classPrefix} ${classPrefix}-title`}>{articleInfo.title}</h3>
+                  </div>
+                  <article className={`${classPrefix} ${classPrefix}-body`} dangerouslySetInnerHTML={{__html:articleInfo.page}}></article>
+                    <nav className={`${classPrefix} ${classPrefix}-nav`}>
+                        <Link to={`${articleInfo.previousPageId}`}>
+                        <button>
+                          <FontAwesomeIcon icon={faAngleLeft} />{`上一篇：${articleInfo.previousPageTitle}`}
+                        </button>
+                        </Link>
+                        <Link to={`${articleInfo.nextPageId}`}>
+                        <button>
+                          {`下一篇：${articleInfo.nextPageTitle}`}<FontAwesomeIcon icon={faAngleRight} />
+                        </button>
+                        </Link>
+                    </nav>
                 </React.Fragment>
               )};
             case Status.FAILURE: {return (<div>{'加载失败啊喵!'}</div>)};

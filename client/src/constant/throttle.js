@@ -1,4 +1,4 @@
-export const throttle = (fn, interval = 500) => {
+export const throttle = (fn, interval = 16) => {
   const _self = fn;
   let timer,
     firstTime = true;
