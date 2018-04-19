@@ -1,24 +1,52 @@
-# BlogBuild
-<h1>搭建博客</h1>
-<p>学习了各种全家桶后，作为实践项目而诞生;</p>
-<p>技术栈: 前端:react+redux+react-router 后端:koa2 构建工具:webpack babel api:Restful 有考虑采用同构方式渲染，<s>并且使用antd</s>;</p>
-<p>目前打算先写出博客基本功能，后期不断迭代;</p>
-<p>goal: 博客基本功能:<strong>about me</strong>与<strong> upload</strong>;</p>
-<p>timeline: 
-  <br />
-  2018/2/22 webpack脚手架搭建;
-  <br />
-  2018/2/23 翻阅antd文档,决定不采用,博客本质上是个性化的东西,以上;侧边栏
-  简单写完;
-  <br />
-  2018/2/24 articles主题部分+reducer
-  <br />
-  2018/2/25,2018/2/26 重构articles
-  <br />
-  2018/3/25 一个月过去了，初版完成，有点拖拉，毕竟不是每天都在写
-  <br />
-  2018/4/5 后端写完，服务器搭建完毕，域名买了，证书买了，正式上线
-  <br />
-  2018/4/15 最近短学期结课，诸事缠身，还要准备简历，添加了阅读次数统计功能
-  https://www.moyui.site
-</p>
+# Moyui的个人博客
+
+## 技术栈
+
+```
+react + redux + react-router + ES6/7 + webpack + koa
+```
+
+## 演示地址
+__[Moyui的个人博客](https://www.moyui.site)__
+
+
+## 代码目录说明
+
+    ├── articles 博客文章存档
+    ├── build/dist 前端打包生成目录
+    ├── client 前端代码
+    │     ├── assets/dist html文件
+    │     ├── webpack.** webpack配置文件
+    │     └── src 代码存放地址
+    │          ├── archive 归档组件
+    │          ├── article-info 文章页面组件
+    │          ├── article-items 文章条目组件
+    │          ├── article-fetch-wrap 请求资源组件
+    │          ├── constant 公有组件
+    │          ├── css css文件
+    │          ├── image 图片文件
+    │          ├── nav-bar 导航栏组件
+    │          ├── not-found 404页面
+    │          ├── sideMenu 侧栏组件
+    │          ├── Blog.js 总页面
+    │          ├── Store.js Redux-store
+    │          └── index.js 输出目录
+    └── server 服务端代码
+          ├── config 路由目录
+          ├── controller 控制器目录
+          ├── model 模式目录
+          └── app.js 入口文件
+
+## TodoList
+- [x] PC端
+- [x] 移动端
+- [x] 首页
+- [x] 列表
+- [x] 文章
+- [x] 归档
+- [ ] 分类
+- [ ] 评论or留言
+- [ ] 搜索
+- [ ] 音乐
+- [ ] 美化
+
