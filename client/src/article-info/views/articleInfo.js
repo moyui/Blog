@@ -18,6 +18,18 @@ class ArticleInfo extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    const articleMatchIdPresent = this.props.match.params.id;//在articleList中利用:id匹配到的文章id
+    const articleMatchIdNext = nextProps.match.params.id;
+    if (articleMatchIdNext !== articleMatchIdPresent) {
+      this.fetchAInfo(articleMatchIdNext);
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   async fetchAInfo(id, event) {
     const apiUrl = `/v1/article/${id}`;
     const headers = new Headers();
@@ -68,12 +80,12 @@ class ArticleInfo extends React.Component {
                   </div>
                   <article className={`${classPrefix} ${classPrefix}-body`} dangerouslySetInnerHTML={{__html:articleInfo.page}}></article>
                     <nav className={`${classPrefix} ${classPrefix}-nav`}>
-                        <Link to={`${articleInfo.previousPageId}`}>
+                        <Link to={`/articleinfo/${articleInfo.previousPageId}`}>
                         <button>
                           <FontAwesomeIcon icon={faAngleLeft} />{`上一篇：${articleInfo.previousPageTitle}`}
                         </button>
                         </Link>
-                        <Link to={`${articleInfo.nextPageId}`}>
+                        <Link to={`/articleinfo/${articleInfo.nextPageId}`}>
                         <button>
                           {`下一篇：${articleInfo.nextPageTitle}`}<FontAwesomeIcon icon={faAngleRight} />
                         </button>

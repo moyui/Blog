@@ -81,6 +81,23 @@ a {
   span, button, li, pre {
     font-size: 12px;
   }
+  .slide-enter {
+    top: -38px;
+  }
+  
+  .slide-enter.slide-enter-active {
+    top: 0;
+    transition: top 300ms ease-in
+  }
+  
+  .slide-leave {
+    top: 0;
+  }
+  
+  .slide-leave.slide-leave-active {
+    top: -38px;
+    transition: top 200ms ease-in
+  }
 }
 
 @media (min-width: 1280px) and (max-width: 1920px) {
@@ -98,6 +115,23 @@ a {
   }
   span, button, li, pre {
     font-size: 14px;
+  }
+  .slide-enter {
+    top: -38px;
+  }
+  
+  .slide-enter.slide-enter-active {
+    top: 0;
+    transition: top 300ms ease-in
+  }
+  
+  .slide-leave {
+    top: 0;
+  }
+  
+  .slide-leave.slide-leave-active {
+    top: -38px;
+    transition: top 200ms ease-in
   }
 }
 
@@ -117,7 +151,114 @@ a {
   span, button, li, pre {
     font-size: 16px;
   }
+  .slide-enter {
+    top: -38px;
+  }
+  
+  .slide-enter.slide-enter-active {
+    top: 0;
+    transition: top 300ms ease-in
+  }
+  
+  .slide-leave {
+    top: 0;
+  }
+  
+  .slide-leave.slide-leave-active {
+    top: -38px;
+    transition: top 200ms ease-in
+  }
 }
+
+/*以下是移动端部分*/
+@media (max-width: 320px) {
+  div, p, article {
+    font-size: 12px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  h4 {
+    font-size: 14px;
+  }
+  h5 {
+    font-size: 13px;
+  }
+  span, button, li, pre {
+    font-size: 10px;
+  }
+  .side-bar-wrap {
+    display: none !important;
+  }
+  .main-body-wrap {
+    margin: 0 0 40px 0 !important;
+  }
+  .article-item-content,
+  .archive-item-content,
+  .article-info-content {
+    padding: 10px 0 !important;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  div, p, article {
+    font-size: 14px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  h5 {
+    font-size: 15px;
+  }
+  span, button, li, pre {
+    font-size: 10px;
+  }
+  .side-bar-wrap {
+    display: none !important;
+  }
+  .main-body-wrap {
+    margin: 0 0 40px 0 !important;
+  }
+  .article-item-content,
+  .archive-item-content,
+  .article-info-content {
+    padding: 10px 0 !important;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 720px) {
+  div, p, article {
+    font-size: 16px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  h5 {
+    font-size: 17px;
+  }
+  span, button, li, pre {
+    font-size: 10px;
+  }
+  .side-bar-wrap {
+    display: none !important;
+  }
+  .main-body-wrap {
+    margin: 0 0 40px 0 !important;
+  }
+  .article-item-content,
+  .archive-item-content,
+  .article-info-content {
+    padding: 10px 0 !important;
+  }
+}
+
+
 
 p, div, h1, h2, h3, h4, h5 {
   font-family: "Georgia";
@@ -162,24 +303,6 @@ pre {
   background-color: white;
   color: black;
   transition: all 500ms;
-}
-
-.slide-enter {
-  top: -38px;
-}
-
-.slide-enter.slide-enter-active {
-  top: 0;
-  transition: top 300ms ease-in
-}
-
-.slide-leave {
-  top: 0;
-}
-
-.slide-leave.slide-leave-active {
-  top: -38px;
-  transition: top 200ms ease-in
 }
 
 /*头图*/
@@ -289,7 +412,6 @@ pre {
 .article-item-content:last-child {
   margin-bottom: 0;
 }
-
 
 .article-item-header,
 .article-item-body {

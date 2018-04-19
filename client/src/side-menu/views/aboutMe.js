@@ -19,14 +19,14 @@ const AboutMe = () => {
         <li><a href="https://weibo.com/u/5685710194?refer_flag=1001030201_"><FontAwesomeIcon icon={faWeibo} className={`fa-2x ${classPerfix}-icon`}/></a></li>
         <li><a href="https://www.zhihu.com/people/gao-xi-yu-44/activities"><FontAwesomeIcon icon={fabook} className={`fa-2x ${classPerfix}-icon`}/></a></li>
       </ul>
-      <div className={`${classPerfix}`}>
+      {/*<div className={`${classPerfix}`}>
         <Link to={'/archive'} className={`${classPerfix}`}>
           <span>{'文章总数：'}</span><span></span>
         </Link>
         <Link to={'/'} className={`${classPerfix}`}>
           <span>{'分类：'}</span><span></span>
         </Link>
-      </div>
+  </div>*/}
     </React.Fragment>
   );
 };
