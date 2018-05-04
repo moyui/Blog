@@ -12,14 +12,14 @@ const selectVarieties = (articleItems) => {
     return false;
   } 
   const varieties = new Map();
-  let temp = [];
   articleItemsData.map((item) => {
     const listItems = {
       id: item.id,
       title: item.title,
     };
+    let temp = [];
     varieties.has(item.archive) ?  
-    temp = varieties.get(item.archive) : temp = [];
+    temp = varieties.get(item.archive) : temp;
     temp.push(listItems);
     varieties.set(item.archive, temp);
   })

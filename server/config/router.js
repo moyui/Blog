@@ -12,6 +12,7 @@ module.exports = function() {
   router.get('/v1/article/:id', ArticleInfo.getArticeInfoById);
   router.post('/v1/article/:id/readtimes' , ArticleInfo.postArticleReadTimesById);
   router.post('/v1/article', ArticleInfo.postCreateNewArticle);
+  router.delete('/v1/article/:id', ArticleInfo.deleteArticleById);
   
   return router;
 }

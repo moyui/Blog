@@ -22,7 +22,7 @@ exports.getArticeInfoById = async(ctx, next) => {
     [articleInfoById, prevArticleInfo, nextArticleInfo] = //进行数据库查询
       await Promise.all([
         Article.findById(id),
-        Article.findOne({'_id': {'$lt': id}}),
+        Article.findOne({'_id': {'$lt': id}}).sort({_id:-1}),
         Article.findOne({'_id': {'$gt': id}})
       ]);
   } catch(err) {
@@ -114,6 +114,32 @@ exports.postArticleReadTimesById = async(ctx, next) => {
     return next
   }
   ctx.status = 201;
+  ctx.set('Content-Type', 'application/json');
+  ctx.body =  JSON.stringify({ //增加成功
+    status: 'success'
+  });
+}
+
+/**
+ * 删除文章
+ * @param  {[type]}   ctx  [description]
+ * @param  {function} next [description]
+ * @return {[type]}        [description]
+ */
+exports.deleteArticleById = async(ctx, next) => {
+  const id = ctx.params.id;
+  try {
+    await Article.remove({ '_id': id});
+  } catch (err) {
+    ctx.status = 404;
+    ctx.set('Content-Type', 'application/json');
+    ctx.body = JSON.stringify({
+      status: 'error'
+    });
+    console.log("资源不存在", err);
+    return next
+  }
+  ctx.status = 200;
   ctx.set('Content-Type', 'application/json');
   ctx.body =  JSON.stringify({ //增加成功
     status: 'success'

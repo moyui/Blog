@@ -564,6 +564,7 @@ pre {
   justify-content: space-around;
 }
 
+.article-info-body h3,
 .article-info-body h4,
 .article-info-body h5 {
   text-align: center;
@@ -586,6 +587,10 @@ pre {
 .article-info-body>pre {
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.article-info-body img {
+  width: 100%;
 }
 
 .article-info-nav {
@@ -618,6 +623,15 @@ pre {
   padding: 40px;
   border-radius: 10px;
   background-color: white;
+  margin: 40px 0;
+}
+
+.archive-item-content:first-child {
+  margin-top: 0;
+}
+
+.archive-item-content:last-child {
+  margin-bottom: 0;
 }
 
 .archive-item {

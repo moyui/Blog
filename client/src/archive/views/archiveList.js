@@ -6,6 +6,12 @@ import { ArchiveItems } from './archiveItems.js';
 
 const ArchiveList = (props) => {
   const { varieties, clickCount } = props;
+  const renderList = [];
+
+  for (const key of varieties.keys()) { //map遍历元素
+    renderList.push(key);
+  }
+
   return(
     <React.Fragment>
       <CSSTransitionGroup
@@ -15,17 +21,15 @@ const ArchiveList = (props) => {
         transitionAppear={true}
         transitionAppearTimeout={1000}>
         {
-          (() => {
-            for (const [key, value] of varieties.entries()) { //map遍历元素
-              return (
-                <ArchiveItems 
-                  name={key}
-                  list={value}
-                  key={key}
-                />
-              );
-            }
-          })()
+          renderList.map((key) => {
+            const value = varieties.get(key);
+
+            return (<ArchiveItems 
+              name={key}
+              list={value}
+              key={key}
+            />);
+          })
         }
       </CSSTransitionGroup>
     </React.Fragment>
