@@ -3,7 +3,7 @@
 ## 技术栈
 
 ```
-react + redux + react-router + ES6/7 + webpack + koa
+react + redux + react-router + koa2 + TypeScript
 ```
 
 ## 演示地址
@@ -51,5 +51,6 @@ __[Moyui的个人博客](https://www.moyui.site)__
 - [ ] 美化
 
 ## TimeLine
+* 2019-9-1  各种鸽子，升级wepack与重新构建
 * 2019-3-28 时隔大半年,博客重新开工
 * 2018-5-30 博客第一期完工

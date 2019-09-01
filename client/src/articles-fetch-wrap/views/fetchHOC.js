@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { CSSTransitionGroup } from 'react-transition-group';
 
 import { fetchAItems } from '../../constant/actions.js';
 import { setNum } from '../actions.js';
@@ -43,12 +42,6 @@ const fetchHOC = (WrappedComponent) => {
       
       return (
         <React.Fragment>
-          <CSSTransitionGroup
-            transitionName="push"
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={700}
-            transitionAppear={true}
-            transitionAppearTimeout={1000}>
           {
             (() => {
               switch(status) {
@@ -76,7 +69,6 @@ const fetchHOC = (WrappedComponent) => {
               }
            })()
           }
-          </CSSTransitionGroup>
         </React.Fragment>
       );
     }

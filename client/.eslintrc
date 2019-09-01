@@ -1,0 +1,11 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "airbnb",
+        "plugin:react/recommended",
+        "airbnb/hooks"
+    ],
+    "plugins": [
+        "react"
+    ]
+}
