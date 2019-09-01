@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CSSTransitionGroup } from 'react-transition-group'
 
 import { throttle } from '../../constant/throttle.js';
 
@@ -12,7 +11,7 @@ class NavBar extends React.Component {
       switchHide: false
     };
 
-    this.handleWheel = throttle(this.handleWheel.bind(this), 1000/60);
+    this.handleWheel = throttle(this.handleWheel.bind(this), 1000 / 60);
   }
 
   componentDidMount() {
@@ -36,23 +35,21 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <CSSTransitionGroup 
-        transitionName="slide"
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={200}>
-        {
-          (this.state.switchHide) ? null : 
-          (
-            <nav className="nav-bar">
-              <ul className="nav-ul">
-                <li><Link to="/home">首页</Link></li>
-                <li><Link to="/archive">归档</Link></li>
-              </ul>
-            </nav>
-          )
-        }
-      </CSSTransitionGroup>
-    )
+      <React.Fragment>
+        {this.state.switchHide ? null : (
+          <nav className="nav-bar">
+            <ul className="nav-ul">
+              <li>
+                <Link to="/home">首页</Link>
+              </li>
+              <li>
+                <Link to="/archive">归档</Link>
+              </li>
+            </ul>
+          </nav>
+        )}
+      </React.Fragment>
+    );
   }
 }
 

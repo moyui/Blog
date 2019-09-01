@@ -1,22 +1,19 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const path = require('path');
 const common = require('./webpack.common.js');
+const utils = require('./utils');
 
 module.exports = merge(common, {
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './assets/dist')
+    path: utils.getPath('../dist')
   },
   devtool: 'inline-sourece-map',
   devServer: {
-    contentBase: './assets/dist',
-    hot: true,
+    contentBase: '../dist',
+    hotOnly: true,
     inline: true,
-    historyApiFallback: true,
+    historyApiFallback: true
   },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 });
