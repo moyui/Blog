@@ -44,7 +44,6 @@ __[Moyui的个人博客](https://www.moyui.site)__
 - [x] 列表
 - [x] 文章
 - [x] 归档
-- [ ] TypeScript 施工中
 - [ ] 分类
 - [ ] 评论or留言
 - [ ] 搜索
