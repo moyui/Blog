@@ -1,21 +1,26 @@
 import React from 'react';
+import NavBar from '../../components/navBar/index';
+
+
+import query from './api';
 
 function ArticlePage() {
   const [info, setInfo] = useState({});
 
+  query();
+
   useEffect(() => {
-        
-
-
-      return () => {
-          effect
-      };
-  }, [input])
+    return () => {
+      effect;
+    };
+  }, [input]);
 
   return (
-    <div>
-      <img />
-      <h2>{}</h2>
-    </div>
+    <>
+      <NavBar></NavBar>
+
+    </>
   );
 }
+
+export default ArticlePage;

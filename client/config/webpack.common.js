@@ -9,7 +9,10 @@ module.exports = {
     vender: ['lodash', 'react', 'react-dom', 'react-router-dom']
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"]
+    extensions: [".js", ".jsx", ".json"],
+    alias: {
+      '@/url': utils.getPath('./fetch.js')
+    }
   },
   module: {
     rules: [
