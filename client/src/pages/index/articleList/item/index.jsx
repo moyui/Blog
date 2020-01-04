@@ -56,7 +56,7 @@ const Content = styled.p`
 
 function ArticleItem(props) {
   return (
-    <Li to={props.url}>
+    <Li to={`/articlePage/${props.number}`}>
       <Title>{props.title}</Title>
       <Meta>
         <span className="sorting">分类：{props.sorting}</span>

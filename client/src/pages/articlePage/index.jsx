@@ -1,24 +1,48 @@
-import React from 'react';
-import NavBar from '../../components/navBar/index';
+import React, { useState, useEffect } from "react";
+import NavBar from "../../components/navBar/index";
 
+import fetchArticle from "./api";
 
-import query from './api';
+const initiaPage = {
+  status: "loading",
+  data: {
+    title: "",
+    updatedAt: "",
+    body: ""
+  },
+  error: null
+};
 
-function ArticlePage() {
-  const [info, setInfo] = useState({});
+function ArticlePage(props) {
+  const {
+    match: { params }
+  } = props;
+  const { number } = params;
 
-  query();
+  const [info, setInfo] = useState(initiaPage);
 
   useEffect(() => {
-    return () => {
-      effect;
-    };
-  }, [input]);
+    fetchArticle({ number }).then(res => {
+      const data = res.data.repository.issue;
+      setInfo({
+        status: "success",
+        data: {
+          title: data.title,
+          updatedAt: data.updatedAt,
+          body: data.bodyHTML
+        }
+      });
+    });
+  }, []);
 
   return (
     <>
       <NavBar></NavBar>
-
+      <div>
+        <h3>{info.data.title}</h3>
+        <span>{info.data.updatedAt}</span>
+      </div>
+      <section dangerouslySetInnerHTML={{ __html: info.data.body }}></section>
     </>
   );
 }

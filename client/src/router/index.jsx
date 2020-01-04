@@ -8,7 +8,7 @@ export default function AppRouter() {
   return (
     <Router>
       <Route path="/" exact component={Index} />
-      <Route path="/articlePage" component={ArticlePage} />
+      <Route path="/articlePage/:number" component={ArticlePage} />
       {/* <Route path="/users/" component={Users} /> */}
     </Router>
   );

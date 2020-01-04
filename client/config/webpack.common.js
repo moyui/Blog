@@ -11,7 +11,8 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".json"],
     alias: {
-      '@/url': utils.getPath('./fetch.js')
+      '@/url': utils.getPath('./fetch.js'),
+      '@/gFetch': utils.getPath('../src/helper/gqlFetch.js')
     }
   },
   module: {
