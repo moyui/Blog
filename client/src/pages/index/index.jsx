@@ -1,31 +1,61 @@
-import React, { useState } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 
+import NavBar from '../../components/navBar/index';
+import Foot from '../../components/footer/index';
+import AboutMe from './aboutMe/index';
 import ArticleList from './articleList/index';
 
-export default function Index() {
-  const contact = [];
-  const article = [];
+const Wrap = styled.div`
+  display: grid;
+  grid-template-rows: auto auto 48px;
+  grid-template-areas:
+    'header header'
+    'main main'
+    'footer footer';
+`;
 
+const Header = styled.header`
+  grid-area: header;
+`;
+
+const Main = styled.div`
+  grid-area: main;
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+const MainInner = styled.div`
+  display: inline-flex;
+  flex-direction: row;
+`;
+
+const BigImage = styled.img`
+  display: block;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const Footer = styled(Foot)`
+  grid-area: footer;
+`;
+
+export default function Index() {
   return (
-    <div>
-      {/* 导航栏位置<div></div> */}
-      <aside>
-        <h2>关于我</h2>
-        <img />
-        <div>昵称：moyui（末御/默羽）。英文名：Sean</div>
-        <div>职业：前端开发工程师/图形学爱好者/音游er</div>
-        <div>
-          <span>联系我：</span>
-          <div>
-            {contact.map((item, index) => (
-              <span key={index}>{item}</span>
-            ))}
-          </div>
-        </div>
-      </aside>
-      {/* 大pic位置 */}
-      {/* <div></div> */}
-      <ArticleList />
-    </div>
+    <Wrap>
+      <Header>
+        <NavBar></NavBar>
+        <BigImage src="https://i.loli.net/2019/09/10/A1ak4ROTd8PKNEL.png" />
+      </Header>
+      <Main>
+        <MainInner>
+          <ArticleList />
+          <AboutMe></AboutMe>
+        </MainInner>
+      </Main>
+      <Footer></Footer>
+    </Wrap>
   );
 }

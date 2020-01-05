@@ -1,20 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
-import Item from './item/index';
+import { getList } from "../api";
+import Item from "./item/index";
 
-export default class ArticleList extends React.Component {
-  render() {
-    const { articleList = [] } = this.props;
+const List = styled.ul`
+  width: 772px;
+`;
 
-    return (
-      <ul>
-        {articleList.map(item => {
-          <Link to={item.url}>
-            <Item {...item} key={item.id} />;
-          </Link>;
-        })}
-      </ul>
-    );
-  }
+const initialList = { status: "loading", data: [], error: null };
+
+function ArticleList() {
+  const [list, setList] = useState(initialList);
+
+  useEffect(() => {
+    getList()
+      .then(res =>
+        setList({ status: "success", data: res.data.repository.issues.edges })
+      )
+      .catch(error => setList({ status: "error", data: [], error }));
+  }, []);
+
+  return (
+    <List>
+      {list.data.map(item => {
+        const formatData = formatItem(item);
+        return <Item {...formatData} key={formatData.id} />;
+      })}
+    </List>
+  );
 }
+
+function formatItem(item) {
+  const data = item.node;
+  return {
+    id: item.cursor,
+    title: data.title,
+    date: data.updatedAt,
+    content: `${data.bodyText.slice(0, 100)}...`,
+    sorting: "",
+    watchingTimes: "",
+    number: data.number
+  };
+}
+
+export default React.memo(ArticleList);

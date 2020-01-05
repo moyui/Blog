@@ -9,7 +9,12 @@ module.exports = {
     vender: ['lodash', 'react', 'react-dom', 'react-router-dom']
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"]
+    extensions: [".js", ".jsx", ".json"],
+    alias: {
+      '@/url': utils.getPath('./fetch.js'),
+      '@/gFetch': utils.getPath('../src/helper/gqlFetch.js'),
+      '@/gconfig': utils.getPath('./gql.js')
+    }
   },
   module: {
     rules: [
