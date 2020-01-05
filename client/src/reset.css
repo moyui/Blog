@@ -24,7 +24,7 @@ select,
 textarea {
   /* for ie */
   /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
-  font: 12px/1 Tahoma, Helvetica, Arial, '\5b8b\4f53', sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+  font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
 }
 
 h1 {
@@ -54,7 +54,7 @@ kbd,
 pre,
 samp,
 tt {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 } /* 统一等宽字体 */
 small {
   font-size: 12px;
@@ -69,9 +69,18 @@ ol {
 /* 重置文本格式元素 */
 a {
   text-decoration: none;
+  font: normal normal normal medium/normal "Microsoft YaHei";
+  color: unset;
 }
 a:hover {
-  text-decoration: underline;
+  color: unset;
+  text-decoration: none;
+}
+a:active {
+  color: unset;
+}
+a:focus {
+  outline: none;
 }
 
 abbr[title],
@@ -83,7 +92,7 @@ acronym[title] {
 
 q:before,
 q:after {
-  content: '';
+  content: "";
 }
 
 /* 重置表单元素 */
@@ -101,7 +110,6 @@ select,
 textarea {
   font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
 }
-
 /* 重置表格元素 */
 table {
   border-collapse: collapse;

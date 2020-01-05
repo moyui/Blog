@@ -1,5 +1,15 @@
-import React from 'react';
+import React from "react";
+import styled from "styled-components";
 
-export default React.memo(function Footer({ className, children }) {
-  return <footer className={className}>moyui的个人博客</footer>;
+const Foot = styled.footer`
+  background: #232323;
+  padding: 15px 0 10px;
+  text-align: center;
+  color: #888;
+  font-size: 12px;
+  line-height: 1.5;
+`;
+
+export default React.memo(function Footer({ className }) {
+  return <Foot className={className}>moyui的个人博客</Foot>;
 });

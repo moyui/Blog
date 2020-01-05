@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import client from '@/gFetch'
 
-const getList = (data) => {
+const getList = () => {
     return client.query({
         query: gql`
         query List {
@@ -13,7 +13,11 @@ const getList = (data) => {
                         title
                         updatedAt,
                         bodyText,
-                        number
+                        number,
+                        createdAt,
+                        url,
+                        bodyHTML,
+                        body
                     }
                 }
             },

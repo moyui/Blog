@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-import { getNavBar } from './api';
+import { getNavBar } from "./api";
 
 const Nav = styled.nav`
   position: fixed;
@@ -26,24 +26,25 @@ const MenuItem = styled(Link)`
   font-size: 14px;
 `;
 
-const initialNav = { status: 'loading', value: [], error: null };
+const initialNav = { status: "loading", value: [], error: null };
 
 function NavBars() {
   const [navBar, setNavBar] = useState(initialNav);
 
   useEffect(() => {
     getNavBar()
-      .then(res => setNavBar({ status: 'success', value: res.data.data.list }))
-      .catch(error => setNavBar({ status: 'error', value: [], error }));
+      .then(res => setNavBar({ status: "success", value: res.data.data.list }))
+      .catch(error => setNavBar({ status: "error", value: [], error }));
   }, []);
 
   return (
     <Nav>
       <Menu>
         {navBar.value.map(item => (
-          <MenuItem key={item.id}>{item.name}</MenuItem>
+          <MenuItem key={item.id} to={item.url}>
+            {item.name}
+          </MenuItem>
         ))}
-        <MenuItem to="/articlePage">文章</MenuItem>
       </Menu>
     </Nav>
   );

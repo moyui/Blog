@@ -37,7 +37,7 @@ function formatItem(item) {
     id: item.cursor,
     title: data.title,
     date: data.updatedAt,
-    content: data.bodyText,
+    content: `${data.bodyText.slice(0, 100)}...`,
     sorting: "",
     watchingTimes: "",
     number: data.number

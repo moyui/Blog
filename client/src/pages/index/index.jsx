@@ -22,9 +22,9 @@ const Header = styled.header`
 const Main = styled.div`
   grid-area: main;
   background-color: #f6f6f6;
-  width: 100%;
   display: flex;
   justify-content: center;
+  width: 100%;
 `;
 
 const MainInner = styled.div`

@@ -12,7 +12,8 @@ module.exports = {
     extensions: [".js", ".jsx", ".json"],
     alias: {
       '@/url': utils.getPath('./fetch.js'),
-      '@/gFetch': utils.getPath('../src/helper/gqlFetch.js')
+      '@/gFetch': utils.getPath('../src/helper/gqlFetch.js'),
+      '@/gconfig': utils.getPath('./gql.js')
     }
   },
   module: {
