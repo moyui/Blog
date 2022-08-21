@@ -47,7 +47,7 @@ module.exports = {
     '@typescript-eslint/adjacent-overload-signatures': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-empty-function': 0,
-    '@typescript-eslint/no-empty-interface': 1,
+    // '@typescript-eslint/no-empty-interface': 1,
     'no-console': 'off',
     'prefer-const': 0,
     'no-var': 1,
