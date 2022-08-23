@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 
 const lazy = (component: string) => {
-  const Comp = React.lazy(() => import(/* @vite-ignore */ `@/pages/${component}`));
+  const modules = import.meta.glob(`@/pages/${component}.tsx`);
+
+  const Comp = React.lazy(() => import.meta.glob(`@/pages/${component}.tsx`));
   return (
     <React.Suspense fallback={<>...</>}>
       <Comp />
@@ -13,6 +15,11 @@ export default [
   {
     name: '首页',
     path: '/blog',
+    element: lazy('list')
+  },
+  {
+    name: '首页',
+    path: '/blog/list',
     element: lazy('list')
   },
   {
