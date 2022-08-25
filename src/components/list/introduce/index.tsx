@@ -1,27 +1,31 @@
 import React from 'react';
+import type { IntroduceProps } from './index.d';
 
-const Introduce = (props) => {
+const Introduce = (props: IntroduceProps) => {
   return (
-    <section>
-      <div>
+    <section className="flex flex-row justify-center">
+      <div className="">
+        <img src={props.profilePhoto} alt="profile-photo"></img>
+      </div>
+      <div className="flex flex-col justify-center">
+        <span>moyui</span>
         <div>
-          <img></img>
+          <p>fe coder</p>
+          <p>major in React, using Typescript, Antd</p>
+          <p>familiar with micro-frontend by Qiankun, building inner-platform by Nest.js</p>
+          <p>exploring Web3!</p>
         </div>
         <div>
-          <span></span>
-          <div>
-            <p></p>
-            <p></p>
-            <p></p>
-          </div>
-          <div>
-            <div></div>
-            <div>
-              <i></i>
-              <i></i>
-              <i></i>
-            </div>
-          </div>
+          <div>connect me</div>
+          <ul>
+            {props.connect.map((item) => (
+              <li>
+                <a href={item.href}>
+                  <></>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

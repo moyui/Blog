@@ -1,16 +1,19 @@
 import React from 'react';
 
-const Post = (props) => {
+import type { PostProps } from './index.d';
+
+const Post = (props: PostProps) => {
   return (
     <section>
       <div>
-        <img></img>
+        <img src={props.image} alt="post-image"></img>
       </div>
       <div>
-        <h5></h5>
+        <h5>{props.title}</h5>
         <div>
-          <span></span>
-          <span></span>
+          <span>{props.pageView}</span>
+          <span>{props.createDate}</span>
+          <span>{props.updateDate}</span>
         </div>
       </div>
     </section>
