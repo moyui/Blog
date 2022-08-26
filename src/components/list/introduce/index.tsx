@@ -4,7 +4,7 @@ import type { IntroduceProps } from './index.d';
 const Introduce = (props: IntroduceProps) => {
   return (
     <section className="flex flex-row justify-center">
-      <div className="">
+      <div className="w-24 h-24 rounded-3xl overflow-hidden">
         <img src={props.profilePhoto} alt="profile-photo"></img>
       </div>
       <div className="flex flex-col justify-center">
@@ -19,9 +19,10 @@ const Introduce = (props: IntroduceProps) => {
           <div>connect me</div>
           <ul>
             {props.connect.map((item) => (
-              <li>
+              <li key={item.id}>
                 <a href={item.href}>
-                  <></>
+                  <i>{item.svg}</i>
+                  <span>{item.name}</span>
                 </a>
               </li>
             ))}

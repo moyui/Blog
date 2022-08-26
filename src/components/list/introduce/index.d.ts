@@ -1,11 +1,12 @@
 interface ConnectProps {
+  id: number;
   name: string;
   href: string;
-  image: string;
+  svg: JSX.Element;
 }
 
 export interface IntroduceProps {
-  backgroundImage: string;
+  // backgroundImage: string;
   profilePhoto: string;
   connect: ConnectProps[];
 }
