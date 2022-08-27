@@ -3,15 +3,15 @@ import type { IntroduceProps } from './index.d';
 
 const Introduce = (props: IntroduceProps) => {
   return (
-    <section className="flex flex-row justify-center">
-      <div className="w-24 h-24 overflow-hidden rounded-full">
+    <section className="flex flex-row justify-between px-16">
+      <div className="w-48 h-48 overflow-hidden rounded-full">
         <img
           src={props.profilePhoto}
           className="w-full h-full object-cover"
           alt="profile-photo"
         ></img>
       </div>
-      <div className="flex flex-col justify-center text-gray-600 ml-16">
+      <div className="flex flex-col justify-center text-gray-600">
         <span className="text-4xl text-gray-800">I`m moyui</span>
         <div className="mt-4">
           <p className="mt-1">FE coder</p>

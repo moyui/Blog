@@ -3,5 +3,5 @@ export interface PostProps {
   title: string;
   createDate: string;
   updateDate: string;
-  pageView: number;
+  href: string;
 }
