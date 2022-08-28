@@ -14,6 +14,7 @@ const router = new Router();
 
 router.all('*', async (ctx) => {
   ctx.body = template;
+  ctx.set('Content-Type', 'text/html');
   ctx.status = 200;
 });
 
