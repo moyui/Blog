@@ -8,7 +8,7 @@ const app = new Koa({
   proxy: true
 });
 
-const template = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'));
+const template = fs.readFileSync(path.resolve(__dirname, './dist/index.html'));
 
 const router = new Router();
 
