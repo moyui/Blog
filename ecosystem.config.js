@@ -1,7 +1,17 @@
 module.exports = {
-  script: 'serve',
-  env: {
-    PM2_SERVE_PATH: './dist',
-    PM2_SERVE_PORT: 8080
-  }
+  apps: [
+    {
+      name: 'blog-clint',
+      max_memory_restart: '1G',
+      script: 'node server/index.js',
+      instances: 1,
+      cron_restart: '0 0 * * *',
+      env: {
+        NODE_ENV: 'development'
+      },
+      env_production: {
+        NODE_ENV: 'production'
+      }
+    }
+  ]
 };
