@@ -3,7 +3,7 @@ import type { IntroduceProps } from './index.d';
 
 const Introduce = (props: IntroduceProps) => {
   return (
-    <section className="flex flex-row justify-between px-16">
+    <section className="flex flex-row justify-between px-16 py-10">
       <div className="w-48 h-48 overflow-hidden rounded-full">
         <img
           src={props.profilePhoto}

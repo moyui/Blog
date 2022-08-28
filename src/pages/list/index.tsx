@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { ZHIHU_SVG, GITHUB_SVG, EMAIL_SVG, PROFILE_PHOTO } from '@/constants';
+import Header from '@/components/common/header';
 import Introduce from '@/components/list/introduce';
 import Post from '@/components/list/post';
 import { getPosts, PostResponse } from './api';
@@ -15,11 +17,30 @@ const transFormDate = (timeStamp: string) => {
 
 function List() {
   const page = useRef(1);
+  const isLoading = useRef(false);
   const [introduce, setIntroduce] = useState({
     profilePhoto: '',
     connect: [] as any
   });
   const [posts, setPosts] = useState([] as PostResponse[]);
+  const [isPostsFinish, setIsPostsFinish] = useState(false);
+
+  const fetchPosts = () => {
+    if (isLoading.current) return;
+    isLoading.current = true;
+    getPosts(page.current)
+      .then((res) => {
+        setPosts([...posts, ...res.data]);
+        if (res.data?.length === 0) {
+          setIsPostsFinish(true);
+        }
+        isLoading.current = false;
+      })
+      .catch((err) => {
+        console.log('🚀 ~ file: index.tsx ~ line 49 ~ getPosts ~ err', err);
+        isLoading.current = false;
+      });
+  };
 
   useEffect(() => {
     setIntroduce({
@@ -51,33 +72,52 @@ function List() {
   }, []);
 
   useEffect(() => {
-    getPosts(page.current)
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch((err) => {
-        console.log('🚀 ~ file: index.tsx ~ line 49 ~ getPosts ~ err', err);
-      });
+    fetchPosts();
   }, []);
 
-  // const background = 'https://s2.loli.net/2022/08/26/taTxd7jpYgWPbuc.png';
-
   return (
-    <section className="w-[960px] mx-auto">
-      <Introduce {...introduce} profilePhoto={PROFILE_PHOTO}></Introduce>
-      <ul className="w-full">
-        {posts.map((item) => (
-          <Post
-            key={item.id}
-            image="//s2.loli.net/2022/08/27/hvTjF3KBntQO4V9.jpg"
-            title={item.title}
-            createDate={transFormDate(item.created_at)}
-            updateDate={transFormDate(item.updated_at)}
-            href=""
-          ></Post>
-        ))}
-      </ul>
-    </section>
+    <div
+      id="list"
+      className="overflow-y-scroll h-[100vh] after:bg-moyui-pattern after:opacity-70 after:content-[''] after:absolute after:top-0 after:left-0 after:bottom-0 after:right-0 after:z-[-1]"
+    >
+      <Header></Header>
+      <main className="w-[960px] min-h-full px-16 box-content mx-auto bg-while">
+        <Introduce {...introduce} profilePhoto={PROFILE_PHOTO}></Introduce>
+        <ul className="w-full mt-[-1.5rem] h-full">
+          <InfiniteScroll
+            scrollableTarget="list"
+            dataLength={posts.length}
+            hasMore={!isPostsFinish}
+            pullDownToRefreshThreshold={100}
+            next={() => {
+              page.current++;
+              fetchPosts();
+            }}
+            loader={
+              <h4 className="flex flex-row h-10 box-content py-2 text-gray-600 items-center justify-center">
+                更多内容加载中...
+              </h4>
+            }
+            endMessage={
+              <h4 className="flex flex-row h-10 box-content py-2 text-gray-600 items-center justify-center">
+                暂无更多内容
+              </h4>
+            }
+          >
+            {posts.map((item) => (
+              <Post
+                key={item.id}
+                image="//s2.loli.net/2022/08/27/hvTjF3KBntQO4V9.jpg"
+                title={item.title}
+                createDate={transFormDate(item.created_at)}
+                updateDate={transFormDate(item.updated_at)}
+                href={item.html_url}
+              ></Post>
+            ))}
+          </InfiniteScroll>
+        </ul>
+      </main>
+    </div>
   );
 }
 
@@ -91,3 +131,6 @@ export default List;
 
 // https://smms.app/image/hvTjF3KBntQO4V9
 // https://smms.app/delete/gqm8OZrifV7YoN9budJ5eESkxX
+
+// https://smms.app/image/e3mcuQk4NClWzEw
+// https://smms.app/delete/1vdabHjlwyIre27YGKTn8spiJV

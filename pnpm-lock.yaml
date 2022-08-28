@@ -22,6 +22,7 @@ specifiers:
   prettier-stylelint: ^0.4.2
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-infinite-scroll-component: ^6.1.0
   react-router-dom: '6'
   rollup: ^2.78.1
   stylelint: ^14.10.0
@@ -34,6 +35,7 @@ dependencies:
   axios: 0.27.2
   react: registry.npmmirror.com/react/18.2.0
   react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+  react-infinite-scroll-component: 6.1.0_react@18.2.0
   react-router-dom: registry.npmmirror.com/react-router-dom/6.3.0_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
@@ -315,6 +317,20 @@ packages:
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.52.0
+    dev: false
+
+  /react-infinite-scroll-component/6.1.0_react@18.2.0:
+    resolution: {integrity: sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==}
+    peerDependencies:
+      react: '>=16.0.0'
+    dependencies:
+      react: registry.npmmirror.com/react/18.2.0
+      throttle-debounce: 2.3.0
+    dev: false
+
+  /throttle-debounce/2.3.0:
+    resolution: {integrity: sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==}
+    engines: {node: '>=8'}
     dev: false
 
   registry.npmmirror.com/@ampproject/remapping/2.2.0:

@@ -15,7 +15,7 @@ export function getPosts(page: number) {
   return get<PostResponse[]>('/api/v1/blog/getList', {
     params: {
       page,
-      pageSize: 4
+      pageSize: 6
     }
   });
 }

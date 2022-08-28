@@ -7,11 +7,12 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      gray: colors.gray
+      gray: colors.gray,
+      while: colors.white
     },
     extend: {
       backgroundImage: {
-        'moyui-pattern': "url('//s2.loli.net/2022/08/26/taTxd7jpYgWPbuc.png')"
+        'moyui-pattern': "url('//s2.loli.net/2022/08/28/e3mcuQk4NClWzEw.jpg')"
       }
     }
   },
