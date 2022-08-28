@@ -8,16 +8,16 @@ const app = new Koa({
   proxy: true
 });
 
-const template = fs.readFileSync(path.resolve(__dirname, './dist/index.html'));
+const template = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'));
 
 const router = new Router();
 
-router.all('*', async (ctx) => {
+router.all('all', '*', async (ctx) => {
   ctx.body = template;
   ctx.status = 200;
 });
 
-// app.use(KoaStatic(path.resolve(__dirname + '../dist/')));
+app.use(KoaStatic(path.resolve(__dirname + '../dist/')));
 app.use(router.routes()).use(router.allowedMethods());
 
 const port = 8001;
