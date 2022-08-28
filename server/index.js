@@ -12,7 +12,7 @@ const template = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'));
 
 const router = new Router();
 
-router.all('/blog', async (ctx) => {
+router.all('*', async (ctx) => {
   ctx.body = template;
   ctx.status = 200;
 });
