@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'blog-clint',
+      name: 'blog-client',
       max_memory_restart: '1G',
       script: 'node server/index.js',
       instances: 1,
