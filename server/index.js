@@ -9,6 +9,7 @@ const app = new Koa({
 });
 
 const template = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'));
+const assetsPath = path.resolve(__dirname, '../dist');
 
 const router = new Router();
 
@@ -18,7 +19,7 @@ router.all('/blog', async (ctx) => {
   ctx.status = 200;
 });
 
-app.use(KoaStatic(path.resolve(__dirname + '../dist/')));
+app.use(KoaStatic(assetsPath));
 app.use(router.routes()).use(router.allowedMethods());
 
 const port = 8001;
