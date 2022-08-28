@@ -17,7 +17,7 @@ router.all('*', async (ctx) => {
   ctx.status = 200;
 });
 
-app.use(KoaStatic(path.resolve(__dirname + '../dist/')));
+// app.use(KoaStatic(path.resolve(__dirname + '../dist/')));
 app.use(router.routes()).use(router.allowedMethods());
 
 const port = 8001;
