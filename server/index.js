@@ -12,13 +12,13 @@ const template = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'));
 
 const router = new Router();
 
-router.all('*', async (ctx) => {
+router.all('/blog', async (ctx) => {
   ctx.body = template;
   ctx.set('Content-Type', 'text/html');
   ctx.status = 200;
 });
 
-// app.use(KoaStatic(path.resolve(__dirname + '../dist/')));
+app.use(KoaStatic(path.resolve(__dirname + '../dist/')));
 app.use(router.routes()).use(router.allowedMethods());
 
 const port = 8001;
